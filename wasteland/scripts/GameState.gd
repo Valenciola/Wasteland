@@ -1,0 +1,19 @@
+extends Node
+
+# Overarching settings (#1)
+var player_name = ""
+
+var player_stats = {
+    "max_hp": 100,
+    "max_mp": 50,
+}
+
+var inventory = [] # Inventory contents persist across scenes, think Industrial Dungeon
+var flags = {}
+var active_quests = {} # Quests persist throughout scenes
+var party_members = [] # Party members persist as well
+
+var settings = {} # Dictionary will store overarching setting data
+
+func _ready():
+    print("GameState is all good!")

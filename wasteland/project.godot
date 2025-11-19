@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Wasteland"
+run/main_scene="uid://fdr6x5p403y5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
 
 [rendering]
 

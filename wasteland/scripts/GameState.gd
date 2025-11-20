@@ -1,7 +1,7 @@
 extends Node
 
 # Overarching settings (#1)
-var player_name = ""
+var player_name = "You"
 
 var player_stats = {
     "max_hp": 100,

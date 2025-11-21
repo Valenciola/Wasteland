@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfs2fy1jbvpt0"]
+
+[ext_resource type="Texture2D" uid="uid://w5cw73p2xnih" path="res://assets/models/interactables/AbandWell.png" id="1_l1oec"]
+
+[node name="AbandonedWell" type="Node2D"]
+
+[node name="Abandoned Well" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_l1oec")

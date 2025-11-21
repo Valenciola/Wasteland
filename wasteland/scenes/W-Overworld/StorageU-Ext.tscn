@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8rdp17vyblio"]
+
+[ext_resource type="Texture2D" uid="uid://b0ocg8fovb08h" path="res://assets/models/interactables/StorageU - Ext.png" id="1_bd182"]
+
+[node name="StorageU-ext" type="Node2D"]
+
+[node name="Storage Unit" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_bd182")

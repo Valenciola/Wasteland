@@ -11,6 +11,7 @@ script = ExtResource("1_0wfyh")
 [node name="CurrentMap" type="Node2D" parent="."]
 
 [node name="Dialogue" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="DialogueBox" type="Control" parent="Dialogue"]
 layout_mode = 3

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0c8hi473sa8"]
+
+[ext_resource type="Texture2D" uid="uid://2bi5pupkncdr" path="res://assets/models/interactables/ShedSouth - Ext.png" id="1_1qlju"]
+
+[node name="ShedSouth-ext" type="Node2D"]
+
+[node name="South Shed" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_1qlju")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpkss5oyx6rma"]
+
+[ext_resource type="Texture2D" uid="uid://dll24h5v4ihnu" path="res://assets/models/interactables/HouseRed - Ext.png" id="1_a08yj"]
+
+[node name="HouseRed-ext" type="Node2D"]
+
+[node name="Red House" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_a08yj")

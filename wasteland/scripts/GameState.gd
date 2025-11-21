@@ -6,6 +6,7 @@ var player_name = "You"
 var player_stats = {
     "max_hp": 100,
     "max_mp": 50,
+    "speed": 0.4
 }
 
 var inventory = [] # Inventory contents persist across scenes, think Industrial Dungeon

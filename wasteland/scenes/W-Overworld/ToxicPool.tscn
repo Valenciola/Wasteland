@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqyj53hxuast4"]
+
+[ext_resource type="Texture2D" uid="uid://gtyrkuxd871k" path="res://assets/models/interactables/ToxicPool.png" id="1_2vgiq"]
+
+[node name="ToxicPool" type="Node2D"]
+
+[node name="Toxic Pool" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_2vgiq")

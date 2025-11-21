@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpkss5oyx6rma"]
+[gd_scene load_steps=5 format=3 uid="uid://dpkss5oyx6rma"]
 
 [ext_resource type="Texture2D" uid="uid://dll24h5v4ihnu" path="res://assets/models/interactables/HouseRed - Ext.png" id="1_a08yj"]
+[ext_resource type="Script" uid="uid://dvjdalasudcpy" path="res://scenes/W-Overworld/redhouse_entry.gd" id="2_03w4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a08yj"]
+size = Vector2(192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03w4b"]
+size = Vector2(192, 76)
 
 [node name="HouseRed-ext" type="Node2D"]
 
 [node name="Red House" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
 texture = ExtResource("1_a08yj")
+
+[node name="Entry" type="Area2D" parent="."]
+script = ExtResource("2_03w4b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_a08yj")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_03w4b")

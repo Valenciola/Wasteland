@@ -1,10 +1,26 @@
-[gd_scene load_steps=2 format=4 uid="uid://bh5lqk7b8yaxp"]
+[gd_scene load_steps=5 format=4 uid="uid://bh5lqk7b8yaxp"]
 
+[ext_resource type="Script" uid="uid://d2tsrbeeuu243" path="res://scenes/W-Interiors/house_red_int.gd" id="1_lnblb"]
 [ext_resource type="TileSet" uid="uid://rkhgb115a8vc" path="res://assets/tiles/Wasteland-Int.tres" id="1_o5dow"]
+[ext_resource type="Script" uid="uid://s60tqjlbp553" path="res://scenes/W-Interiors/redhouse_exit.gd" id="3_18ksl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko7de"]
+size = Vector2(288, 17)
 
 [node name="HouseRed-int" type="Node2D"]
+script = ExtResource("1_lnblb")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD7////AgADAAEAAAAFAP//AgAEAAEAAAD8////AgAAAAAAAAD9////AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAP//AgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP//AgAAAAAAAAAEAP//AgAAAAAAAAD7//7/AgABAAAAAAD7//3/AgABAAAAAAD7//z/AgABAAAAAAD7//v/AgABAAAAAAAFAP7/AgACAAAAAAAFAP3/AgACAAAAAAAFAPz/AgACAAAAAAAFAPv/AgACAAAAAAD7//r/AgADAAAAAAAFAPr/AgAEAAAAAAD8//r/AgACAAEAAAD9//r/AgACAAEAAAD+//r/AgACAAEAAAD///r/AgACAAEAAAAAAPr/AgACAAEAAAABAPr/AgACAAEAAAACAPr/AgACAAEAAAADAPr/AgACAAEAAAAEAPr/AgACAAEAAAD8//v/AgAAAAAAAAD8//z/AgAAAAAAAAD8//3/AgAAAAAAAAD8//7/AgAAAAAAAAD9//v/AgAAAAAAAAD9//z/AgAAAAAAAAD9//3/AgAAAAAAAAD9//7/AgAAAAAAAAD+//v/AgAAAAAAAAD+//z/AgAAAAAAAAD+//3/AgAAAAAAAAD+//7/AgAAAAAAAAD///v/AgAAAAAAAAD///z/AgAAAAAAAAD///3/AgAAAAAAAAD///7/AgAAAAAAAAAAAPv/AgAAAAAAAAAAAPz/AgAAAAAAAAAAAP3/AgAAAAAAAAAAAP7/AgAAAAAAAAABAPv/AgAAAAAAAAABAPz/AgAAAAAAAAABAP3/AgAAAAAAAAABAP7/AgAAAAAAAAACAPv/AgAAAAAAAAACAPz/AgAAAAAAAAACAP3/AgAAAAAAAAACAP7/AgAAAAAAAAADAPv/AgAAAAAAAAADAPz/AgAAAAAAAAADAP3/AgAAAAAAAAADAP7/AgAAAAAAAAAEAPv/AgAAAAAAAAAEAPz/AgAAAAAAAAAEAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAD8/wEAAgAAAAEAAAD9/wEAAgAAAAEAAAD+/wEAAgAAAAEAAAD//wEAAgAAAAEAAAAAAAEAAgAAAAEAAAABAAEAAgAAAAEAAAACAAEAAgAAAAEAAAADAAEAAgAAAAEAAAAEAAEAAgAAAAEAAAD8/wAAAgAAAAAAAAD9/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAA=")
 tile_set = ExtResource("1_o5dow")
+
+[node name="HouseRed-entry" type="Marker2D" parent="."]
+position = Vector2(15, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_18ksl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 55.5)
+shape = SubResource("RectangleShape2D_ko7de")

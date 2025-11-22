@@ -3,20 +3,50 @@ extends Control
 var inventory = GameState.inventory
 var null_icon = preload("res://assets/icons/Null.png")
 
+# Track whether we're viewing a crate
+var is_crate_view: bool = false
+
 func _ready():
 	print("InventoryUI ready at path:", get_path())
 	populate_inventory()
-	hide()  # start hidden until a crate is opened
+	hide()
+	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # default hidden
 
 func _on_crate_opened(crate_inventory: Dictionary):
 	print("UI received crate inventory:", crate_inventory)
 	inventory = crate_inventory
+	is_crate_view = true
 	populate_inventory()
 	show()
-	$Panel.show()  # ensure the panel itself is visible
+	$Panel.show()
+	$Panel/HBoxContainer/VBoxContainer/Button.show()  # only show in crate view
+
+func open_personal_inventory():
+	print("Opening personal inventory from HUD")
+	inventory = GameState.inventory
+	is_crate_view = false
+	populate_inventory()
+	show()
+	$Panel.show()
+	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # hide in personal view
+
+func _on_take_all_pressed():
+	if not is_crate_view:
+		return  # safety
+	print("Take All pressed")
+	for item_id in inventory.keys():
+		var count = inventory[item_id]
+		if count > 0:
+			if not GameState.inventory.has(item_id):
+				GameState.inventory[item_id] = 0
+			GameState.inventory[item_id] += count
+	inventory.clear()
+	populate_inventory()
+	hide()
+	print("GameState inventory after take all:", GameState.inventory)
 
 func populate_inventory():
-	var grid = $Panel/HBoxContainer/Inventory
+	var grid = $Panel/HBoxContainer/VBoxContainer/Inventory
 	clear(grid)
 	for item_id in inventory.keys():
 		var count = inventory[item_id]
@@ -28,7 +58,6 @@ func populate_inventory():
 
 func _on_slot_pressed(item_id):
 	var item_data = Items.items[item_id]
-
 	var tex = null_icon
 	if item_data.has("icon"):
 		if typeof(item_data["icon"]) == TYPE_STRING:
@@ -45,3 +74,8 @@ func _on_slot_pressed(item_id):
 func clear(container: Node):
 	for child in container.get_children():
 		child.queue_free()
+
+func _process(_delta):
+	if is_visible_in_tree() and Input.is_action_just_pressed("ui_cancel"):
+		hide()
+		print("Inventory closed with Esc")

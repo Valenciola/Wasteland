@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 200  # pixels per second
+var speed = 75  # pixels per second
 
 func _physics_process(_delta):
     var direction = Vector2.ZERO

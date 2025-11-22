@@ -18,6 +18,6 @@ func _on_body_exited(body):
         player_inside = false
 
 func _process(_delta):
-    if player_inside and Input.is_key_pressed(KEY_E): # direct E key for now
+    if player_inside and Input.is_action_just_pressed("interact"):
         GameState.next_spawn_point = spawn_point_name
         get_tree().call_deferred("change_scene_to_file", target_scene)

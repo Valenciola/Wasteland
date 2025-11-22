@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://fdr6x5p403y5"]
+[gd_scene load_steps=5 format=3 uid="uid://fdr6x5p403y5"]
 
 [ext_resource type="Script" uid="uid://dulgkp5qr5pwd" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://clk4vlh6mgo1i" path="res://scripts/DialogueBox.gd" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://dph7bq878d0fn" path="res://scenes/inventory_ui.gd" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dlakj2c7ifl6i" path="res://assets/icons/Null.png" id="3_sugp2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -63,3 +65,63 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 20
 text = "Test test test"
 autowrap_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_jyhfs")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/InventoryUI"]
+offset_right = 97.0
+offset_bottom = 118.0
+scale = Vector2(11.5042, 5.28157)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryUI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryUI/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_sugp2")
+
+[node name="Name" type="Label" parent="UI/InventoryUI/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.641481, 0.559946, 0.176526, 1)
+theme_override_font_sizes/font_size = 6
+text = "NULL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Effect" type="Label" parent="UI/InventoryUI/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_font_sizes/font_size = 7
+text = "HP - 2"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="UI/InventoryUI/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 7
+text = "Words"
+
+[node name="ItemList" type="ItemList" parent="UI/InventoryUI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

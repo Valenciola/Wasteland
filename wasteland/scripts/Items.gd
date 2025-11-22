@@ -7,7 +7,8 @@ var items = {
 		"type": "consumable",
 		"effect": "heal",
 		"degree": 25,
-		"discardable": true
+		"discardable": true,
+		"icon": "res://assets/icons/Apple.png"
 	},
 
 	"TrainWheel": {

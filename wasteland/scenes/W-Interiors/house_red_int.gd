@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	call_deferred("_place_player")
+	print_tree_pretty()
 
 func _place_player():
 	var player = get_tree().get_root().get_node("Player")

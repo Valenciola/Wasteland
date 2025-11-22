@@ -11,6 +11,7 @@ func _ready():
 	populate_inventory()
 	hide()
 	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # default hidden
+	$Panel/HBoxContainer/VBoxContainer/Button.pressed.connect(_on_take_all_pressed)
 
 func _on_crate_opened(crate_inventory: Dictionary):
 	print("UI received crate inventory:", crate_inventory)
@@ -33,15 +34,23 @@ func open_personal_inventory():
 func _on_take_all_pressed():
 	if not is_crate_view:
 		return  # safety
+	
 	print("Take All pressed")
 	for item_id in inventory.keys():
 		var count = inventory[item_id]
 		if count > 0:
+			# Merge into GameState
 			if not GameState.inventory.has(item_id):
 				GameState.inventory[item_id] = 0
 			GameState.inventory[item_id] += count
+
+	# Clear the crate contents
 	inventory.clear()
+
+	# Repopulate (will show empty grid)
 	populate_inventory()
+
+	# Close inventory
 	hide()
 	print("GameState inventory after take all:", GameState.inventory)
 

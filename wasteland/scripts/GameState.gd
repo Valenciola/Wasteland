@@ -9,10 +9,7 @@ var player_stats = {
     "speed": 0.5
 }
 
-var inventory = {
-    "Apple": 6,
-    "TrainWheel": 1
-} # Inventory contents persist across scenes, think Industrial Dungeon
+var inventory = {} # Inventory contents persist across scenes, think Industrial Dungeon
 var flags = {}
 var active_quests = {} # Quests persist throughout scenes
 var party_members = [] # Party members persist as well

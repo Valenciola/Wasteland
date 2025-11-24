@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfgghjsuwfvbn"]
+[gd_scene load_steps=5 format=3 uid="uid://bfgghjsuwfvbn"]
 
 [ext_resource type="Texture2D" uid="uid://dne58nt7teukx" path="res://assets/models/interactables/HousePurple - Ext.png" id="1_m3e0d"]
+[ext_resource type="Script" uid="uid://4km3owlinpjb" path="res://scenes/W-Overworld/purplehouse_entry.gd" id="2_kk87l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmlql"]
+size = Vector2(194, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_et8ji"]
+size = Vector2(193, 77)
 
 [node name="HousePurple-ext" type="Node2D"]
 
 [node name="Purple House" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
 texture = ExtResource("1_m3e0d")
+
+[node name="Entry" type="Area2D" parent="."]
+script = ExtResource("2_kk87l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+position = Vector2(0, -39.5)
+shape = SubResource("RectangleShape2D_mmlql")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_et8ji")

@@ -41,9 +41,7 @@ shape = SubResource("RectangleShape2D_ko7de")
 
 [node name="Crate" parent="." instance=ExtResource("4_18ksl")]
 position = Vector2(-153, -58)
-crate_inventory = {
-"Apple": 3
-}
+crate_id = "redhouse"
 
 [node name="Block (Exit)" type="StaticBody2D" parent="."]
 

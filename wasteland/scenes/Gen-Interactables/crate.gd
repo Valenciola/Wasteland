@@ -1,13 +1,16 @@
 extends Node2D
 
-@export var crate_inventory: Dictionary
+@export var crate_id: String
 var player_nearby: bool = false
 signal crate_opened(inventory)
+var crate_inventory: Dictionary
 
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
 	$Area2D.connect("body_exited", Callable(self, "_on_body_exited"))
 	add_to_group("crates")
+
+	crate_inventory = GameState.crates[crate_id]
 
 	# Find the InventoryUI node and connect directly
 	var ui = get_tree().get_root().get_node("Main/UI/InventoryUI")  # adjust path

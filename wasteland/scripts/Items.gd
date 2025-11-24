@@ -10,6 +10,14 @@ var items = {
 		"discardable": true,
 		"icon": "res://assets/icons/Apple.png"
 	},
+	"Water": {
+		"name": "Water",
+		"description": "A small bottle filled with clear water. The label on it reads, \"Locally Sourced\". That could be a good or bad thing...",
+		"type": "consumable",
+		"effect": "replenish",
+		"degree": 15,
+		"discardable": true
+	},
 
 	"TrainWheel": {
 		"name": "Old Wheel",

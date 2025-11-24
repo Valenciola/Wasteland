@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var target_scene : String = "res://scenes/W-Interiors/HousePurple-Int.tscn"
-@export var spawn_point_name : String = "HousePurple-entry"
+@export var target_scene : String = "res://scenes/W-Overworld/W-Train-Station.tscn"
+@export var spawn_point_name : String = "TrainStation-Entry"
 
 var player_inside = false
 
@@ -29,14 +29,17 @@ func _swap_map():
 
 	# clear out the old map
 	for child in current_map_node.get_children():
+		print("Removing old map child:", child.name)
 		child.queue_free()
 
 	# add the new one
 	current_map_node.add_child(new_map)
+	print("New map added:", new_map.name)
 
 	# move player to the spawn point
 	var spawn = new_map.get_node_or_null(spawn_point_name)
 	if spawn:
 		Player.global_position = spawn.global_position
+		print("Player moved to spawn:", spawn_point_name, "at", spawn.global_position)
 	else:
 		print("Spawn point not found:", spawn_point_name)

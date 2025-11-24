@@ -37,3 +37,6 @@ offset_right = 736.0
 offset_bottom = -150.0
 scale = Vector2(4, 4)
 texture = ExtResource("2_nqe8c")
+
+[node name="TrainStation-Entry" type="Marker2D" parent="."]
+position = Vector2(-108, 101)

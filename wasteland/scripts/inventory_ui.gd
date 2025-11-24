@@ -13,6 +13,10 @@ func _ready():
 	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # default hidden
 	$Panel/HBoxContainer/VBoxContainer/Button.pressed.connect(_on_take_all_pressed)
 
+	$Panel/HBoxContainer/Details/IconFull.texture = null_icon
+	$Panel/HBoxContainer/Details/Title.text = "-"
+	$Panel/HBoxContainer/Details/Description.text = "Select an item to see its details."
+
 func _on_crate_opened(crate_inventory: Dictionary):
 	print("UI received crate inventory:", crate_inventory)
 	inventory = crate_inventory
@@ -64,6 +68,10 @@ func populate_inventory():
 			grid.add_child(slot)
 			slot.call_deferred("setup", item_id, count)
 			slot.pressed.connect(_on_slot_pressed.bind(item_id))
+	
+	$Panel/HBoxContainer/Details/IconFull.texture = null_icon
+	$Panel/HBoxContainer/Details/Title.text = "-"
+	$Panel/HBoxContainer/Details/Description.text = "Select an item to see its details."
 
 func _on_slot_pressed(item_id):
 	var item_data = Items.items[item_id]

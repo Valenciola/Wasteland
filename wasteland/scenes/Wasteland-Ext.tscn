@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bkyttuyhckoq5"]
+[gd_scene load_steps=20 format=4 uid="uid://bkyttuyhckoq5"]
 
 [ext_resource type="TileSet" uid="uid://bavcbbd512uou" path="res://assets/tiles/Wasteland-Ext.tres" id="1_2ljji"]
 [ext_resource type="PackedScene" uid="uid://dpkss5oyx6rma" path="res://scenes/W-Overworld/HouseRed-Ext.tscn" id="1_uwpte"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgghjsuwfvbn" path="res://scenes/W-Overworld/HousePurple-Ext.tscn" id="6_djrtx"]
 [ext_resource type="PackedScene" uid="uid://dqyj53hxuast4" path="res://scenes/W-Overworld/ToxicPool.tscn" id="7_oaqia"]
 [ext_resource type="PackedScene" uid="uid://d0c8hi473sa8" path="res://scenes/W-Overworld/ShedSouth-Ext.tscn" id="8_d3lmy"]
+[ext_resource type="Script" uid="uid://c2bkjgakqreo5" path="res://scenes/to_train_station.gd" id="10_rctqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7lx1"]
 size = Vector2(795, 16)
@@ -20,7 +21,7 @@ size = Vector2(25, 381.5)
 size = Vector2(41, 382)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaqia"]
-size = Vector2(682, 20)
+size = Vector2(695, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3lmy"]
 size = Vector2(199.066, 16.5425)
@@ -31,6 +32,12 @@ size = Vector2(10.6395, 84.5848)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij8nw"]
 radius = 49.8401
 height = 330.496
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij8nw"]
+size = Vector2(16, 942)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyec7"]
+size = Vector2(25, 938)
 
 [node name="Wasteland-ext" type="Node2D"]
 script = ExtResource("1_v7lx1")
@@ -89,7 +96,7 @@ position = Vector2(-252.5, 476)
 shape = SubResource("RectangleShape2D_djrtx")
 
 [node name="Bottom" type="CollisionShape2D" parent="Cliffs"]
-position = Vector2(101, 669)
+position = Vector2(107.5, 669)
 shape = SubResource("RectangleShape2D_oaqia")
 
 [node name="Top left" type="CollisionShape2D" parent="Cliffs"]
@@ -107,5 +114,16 @@ position = Vector2(-394, 256)
 rotation = 1.91463
 shape = SubResource("CapsuleShape2D_ij8nw")
 
+[node name="To Train Station" type="CollisionShape2D" parent="Cliffs"]
+position = Vector2(455, 209)
+shape = SubResource("RectangleShape2D_ij8nw")
+
 [node name="HousePurple-exit" type="Marker2D" parent="."]
 position = Vector2(3, 451)
+
+[node name="TrainStation" type="Area2D" parent="."]
+script = ExtResource("10_rctqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainStation"]
+position = Vector2(445.5, 205)
+shape = SubResource("RectangleShape2D_eyec7")

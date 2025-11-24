@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://fdr6x5p403y5"]
+[gd_scene load_steps=8 format=3 uid="uid://fdr6x5p403y5"]
 
 [ext_resource type="Script" uid="uid://dulgkp5qr5pwd" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://cc114gq6vq5qi" path="res://scenes/HUD.gd" id="2_o6xl0"]
 [ext_resource type="Script" uid="uid://clk4vlh6mgo1i" path="res://scripts/DialogueBox.gd" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bkyttuyhckoq5" path="res://scenes/Wasteland-Ext.tscn" id="2_tefeu"]
 [ext_resource type="Script" uid="uid://dph7bq878d0fn" path="res://scripts/inventory_ui.gd" id="3_jyhfs"]
@@ -11,7 +12,32 @@
 script = ExtResource("1_0wfyh")
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 92.0
+grow_horizontal = 2
+script = ExtResource("2_o6xl0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="Button" type="Button" parent="HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
 
 [node name="CurrentMap" type="Node2D" parent="."]
 

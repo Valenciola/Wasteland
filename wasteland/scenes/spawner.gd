@@ -31,4 +31,4 @@ func create_enemy_for_map(map: Node):
 		enemy.faction = faction
 		map.add_child(enemy)
 		enemy.position = point
-		print("Spawned %s at %s in %s" % [faction, point, map_name])
+		# print("Spawned %s at %s in %s" % [faction, point, map_name])

@@ -5,8 +5,9 @@ func _ready():
 	# print_tree_pretty()
 
 	var currName = GameState.player_name
+	var box = $Dialogue/DialogueBox
 
-	$Dialogue/DialogueBox.show_dialogue([
+	box.show_dialogue([
 		[currName, "Hello there!"],
 		["???", "This is a test dialogue."],
 		[currName, "Press Enter to continue."],

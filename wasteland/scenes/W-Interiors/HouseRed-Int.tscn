@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=4 uid="uid://bh5lqk7b8yaxp"]
+[gd_scene load_steps=9 format=4 uid="uid://bh5lqk7b8yaxp"]
 
-[ext_resource type="Script" uid="uid://d2tsrbeeuu243" path="res://scenes/W-Interiors/house_red_int.gd" id="1_lnblb"]
 [ext_resource type="TileSet" uid="uid://rkhgb115a8vc" path="res://assets/tiles/Wasteland-Int.tres" id="1_o5dow"]
 [ext_resource type="Script" uid="uid://s60tqjlbp553" path="res://scenes/W-Interiors/redhouse_exit.gd" id="3_18ksl"]
 [ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="4_18ksl"]
@@ -22,7 +21,6 @@ size = Vector2(452, 9)
 size = Vector2(4.75, 383)
 
 [node name="HouseRed-int" type="Node2D"]
-script = ExtResource("1_lnblb")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)

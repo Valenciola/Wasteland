@@ -19,7 +19,9 @@ config/icon="res://icon.svg"
 
 GameState="*res://scripts/GameState.gd"
 Player="*res://scenes/Sprites/Player.tscn"
-Items="*res://scripts/Items.gd"
+Items="*res://scripts/data/Items.gd"
+Moves="*res://scripts/data/Moves.gd"
+FactionalSpawn="*res://scripts/data/FactionalSpawn.gd"
 
 [input]
 

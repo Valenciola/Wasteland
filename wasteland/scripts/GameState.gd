@@ -1,25 +1,49 @@
 extends Node
 
-# Player Attribues
+# Player Attributes
 var player_name = "You"
-
-var player_stats = {
-    "max_hp": 100,
-    "max_mp": 50,
-    "speed": 0.5
-}
-
 var inventory = {} # Inventory contents persist across scenes, think Industrial Dungeon
 var flags = {}
 var active_quests = {} # Quests persist throughout scenes
-var party_members = [] # Party members persist as well
+var party_members = ["Player"] # Party members persist as well
+
+var current_stats = {
+    "Player": {"hp": 100, "mp": 50},
+    "Tren": {"hp": 85, "mp": 50},
+    "Arihara": {"hp": 90, "mp": 75}
+}
+
+# Persistent Stats
+var base_stats = {
+    "Player": {
+        "max_hp": 100,
+        "max_mp": 50,
+        "speed": 0.4,
+        "abilities": ["resonance"],
+        "faction": "Enriched"
+    },
+    "Tren": {
+        "max_hp": 85,
+        "max_mp": 50,
+        "speed": 0.6,
+        "abilities": ["mechanic"],
+        "faction": "Woodtown"
+    },
+    "Arihara": {
+        "max_hp": 90,
+        "max_mp": 75,
+        "speed": 0.4,
+        "abilities": ["citizen"],
+        "faction": "Utopia"
+    }
+}
 
 # Back workings
 var settings = {} # Dictionary will store overarching setting data
 var player_can_move: bool = true # The way I'm gonna take away player control lol
-
 var next_spawn_point : String = "" # The place where the player should spawn next
 
+# ID-Based Definitions
 var crates = {
     "redhouse" = {
         "Apple": 3

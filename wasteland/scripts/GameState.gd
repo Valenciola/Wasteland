@@ -20,14 +20,16 @@ var base_stats = {
         "max_mp": 50,
         "speed": 0.4,
         "abilities": ["resonance"],
-        "faction": "Enriched"
+        "faction": "Enriched",
+        "movset": ["Punch", "Kick", "Shift"]
     },
     "Tren": {
         "max_hp": 85,
         "max_mp": 50,
         "speed": 0.6,
         "abilities": ["mechanic"],
-        "faction": "Woodtown"
+        "faction": "Woodtown",
+        "moveset": ["Punch", "Kick", "MetalMark"]
     },
     "Arihara": {
         "max_hp": 90,

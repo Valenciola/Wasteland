@@ -21,7 +21,7 @@ var base_stats = {
         "speed": 0.4,
         "abilities": ["resonance"],
         "faction": "Enriched",
-        "movset": ["Punch", "Kick", "Shift"]
+        "moveset": ["Punch", "Kick", "Shift"]
     },
     "Tren": {
         "max_hp": 85,
@@ -47,13 +47,13 @@ var next_spawn_point : String = "" # The place where the player should spawn nex
 
 # ID-Based Definitions
 var crates = {
-    "redhouse" = {
+    "redhouse": {
         "Apple": 3
     },
-    "purplehouse_a" = {
+    "purplehouse_a": {
         "Apple": 2
     },
-    "purplehouse_b" = {
+    "purplehouse_b": {
         "Apple": 3,
         "Water": 1
     }

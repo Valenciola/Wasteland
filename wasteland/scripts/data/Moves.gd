@@ -36,7 +36,7 @@ var moves = {
 		"type": "attack",
 		"target": "enemy",
 		"power": 20,
-		"factions": "Enriched",
+		"factions": ["Enriched"],
 		"cost": 10,
 		"effect": null,
 		"chance": null

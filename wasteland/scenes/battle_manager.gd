@@ -36,10 +36,8 @@ func det_order():
 	turn_order.clear()
 	for entry in temp:
 		turn_order.append(entry["name"])
-	
-	turn_order.reverse()
 
 	print(turn_order)
 
 func _sort_by_speed(a, b):
-	return b["stats"]["speed"] - a["stats"]["speed"]
+	return a["stats"]["speed"] < b["stats"]["speed"]

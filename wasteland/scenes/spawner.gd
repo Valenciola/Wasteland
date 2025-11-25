@@ -4,12 +4,12 @@ var EnemyScene = preload("res://scenes/Sprites/Enemy.tscn")
 
 func _ready():
 	var current_map = get_node("../CurrentMap").get_child(0) # first child is Wasteland-ext
-	var map_name = current_map.name
-	create_enemy_for_map(map_name)
+	create_enemy_for_map(current_map)
 
-func create_enemy_for_map(map_name: String):
+func create_enemy_for_map(map: Node):
 	var spawn_points = []
 	var faction = ""
+	var map_name = map.name
 
 	match map_name:
 		"Wasteland-ext":
@@ -29,6 +29,6 @@ func create_enemy_for_map(map_name: String):
 	for point in spawn_points:
 		var enemy = EnemyScene.instantiate()
 		enemy.faction = faction
-		add_child(enemy)
+		map.add_child(enemy)
 		enemy.position = point
 		print("Spawned %s at %s in %s" % [faction, point, map_name])

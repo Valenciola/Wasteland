@@ -15,7 +15,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body: Node):
 	if body.name == "Player":
-		print("Player collided with", faction)
+		# print("Player collided with", faction)
 		BattleManager.set_battle(self)
 		queue_free() 
 

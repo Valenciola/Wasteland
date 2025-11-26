@@ -1,6 +1,205 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpqxfbhmjkkqa"]
 
-[ext_resource type="Script" uid="uid://cq15q7ruduw5" path="res://scenes/battle_manager.gd" id="1_bdmed"]
+[ext_resource type="Script" uid="uid://uhclmio8mhdy" path="res://scenes/battle_ui.gd" id="1_bdmed"]
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_bdmed")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329361, 0.430439, 0.825234, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contenders" type="HBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 350
+
+[node name="Enemy-S" type="Panel" parent="CanvasLayer/HBoxContainer/Contenders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Enemies" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Enemy 2" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Enemy 1" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Enemy 3" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Player-S" type="Panel" parent="CanvasLayer/HBoxContainer/Contenders"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Players" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Player-S"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Player 2" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player 1" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player 3" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Panel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Desc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/HBoxContainer/Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false

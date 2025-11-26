@@ -8,36 +8,36 @@ var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well
 
 var current_stats = {
-    "Player": {"hp": 100, "mp": 50},
-    "Tren": {"hp": 85, "mp": 50},
-    "Arihara": {"hp": 90, "mp": 75}
+	"Player": {"hp": 100, "mp": 50},
+	"Tren": {"hp": 85, "mp": 50},
+	"Arihara": {"hp": 90, "mp": 75}
 }
 
 # Persistent Stats
 var base_stats = {
-    "Player": {
-        "max_hp": 100,
-        "max_mp": 50,
-        "speed": 0.4,
-        "abilities": ["resonance"],
-        "faction": "Enriched",
-        "moveset": ["Punch", "Kick", "Shift"]
-    },
-    "Tren": {
-        "max_hp": 85,
-        "max_mp": 50,
-        "speed": 0.6,
-        "abilities": ["mechanic"],
-        "faction": "Woodtown",
-        "moveset": ["Punch", "Kick", "MetalMark"]
-    },
-    "Arihara": {
-        "max_hp": 90,
-        "max_mp": 75,
-        "speed": 0.4,
-        "abilities": ["citizen"],
-        "faction": "Utopia"
-    }
+	"Player": {
+		"max_hp": 100,
+		"max_mp": 50,
+		"speed": 0.4,
+		"abilities": ["resonance"],
+		"faction": "Enriched",
+		"moveset": ["Punch", "Kick", "Shift"]
+	},
+	"Tren": {
+		"max_hp": 85,
+		"max_mp": 50,
+		"speed": 0.6,
+		"abilities": ["mechanic"],
+		"faction": "Woodtown",
+		"moveset": ["Punch", "Kick", "MetalMark"]
+	},
+	"Arihara": {
+		"max_hp": 90,
+		"max_mp": 75,
+		"speed": 0.4,
+		"abilities": ["citizen"],
+		"faction": "Utopia"
+	}
 }
 
 # Back workings
@@ -47,17 +47,17 @@ var next_spawn_point : String = "" # The place where the player should spawn nex
 
 # ID-Based Definitions
 var crates = {
-    "redhouse": {
-        "Apple": 3
-    },
-    "purplehouse_a": {
-        "Apple": 2
-    },
-    "purplehouse_b": {
-        "Apple": 3,
-        "Water": 1
-    }
+	"redhouse": {
+		"Apple": 3
+	},
+	"purplehouse_a": {
+		"Apple": 2
+	},
+	"purplehouse_b": {
+		"Apple": 3,
+		"Water": 1
+	}
 }
 
 func _ready():
-    print("GameState is all good!")
+	print("GameState is all good!")

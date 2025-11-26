@@ -9,7 +9,7 @@ var moves = {
 		"target": "enemy", # Area effect, singular target effect (enemy/team), or self inflict
 		"power": 15, # The degree; what it effects is dependent on the type
 		"factions": null, # Factions the move is available to; null = all
-		"cost": 5, # The amount of MP it uses
+		"cost": 1, # The amount of MP it uses
 		"effect": null, # Effects to be applied to the target if necessary,
 		"chance": 0 # The chance of the effect being applied
 	},

@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://dwduo1n5ki14h" path="res://scenes/spawner.gd" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_0wfyh")
 
 [node name="HUD" type="CanvasLayer" parent="."]

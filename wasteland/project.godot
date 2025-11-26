@@ -22,7 +22,7 @@ Player="*res://scenes/Sprites/Player.tscn"
 Items="*res://scripts/data/Items.gd"
 Moves="*res://scripts/data/Moves.gd"
 FactionalSpawn="*res://scripts/data/FactionalSpawn.gd"
-BattleManager="*res://scenes/battle_manager.gd"
+BattleManager="*res://scripts/battle_manager.gd"
 
 [input]
 

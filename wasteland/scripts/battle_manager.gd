@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var contenders = {}
 var turn_order = []
@@ -8,7 +8,7 @@ var movedict = Moves.moves
 func _ready():
 	randomize()
 
-func set_battle(enemy_node: Node):
+func set_battle(enemies):
 	contenders.clear()
 	turn_idx = 0
 
@@ -21,17 +21,30 @@ func set_battle(enemy_node: Node):
 		contenders[member] = stats
 
 	# Add the enemy
-	contenders[enemy_node.name] = enemy_node.stats
+	if typeof(enemies) == TYPE_ARRAY:
+		for i in range(enemies.size()):
+			var enemy = enemies[i]
+			var id = "%s_%d" % [enemy["name"], i]
+			contenders[id] = enemy
+	elif typeof(enemies) == TYPE_OBJECT: # Node
+		var id = enemies.name
+		contenders[id] = enemies.stats
 
 	# print("Contenders:", contenders)
 
 	det_order()
 
 	# TODO: change scene to battle (start battle, effectively)
+	var battle_overlay = preload("res://scenes/Battle.tscn").instantiate()
+	get_tree().current_scene.add_child(battle_overlay)
+	battle_overlay.setUI(contenders)
+
 	battle()
 
 func battle():
 	# Run the battle right here (#8)
+	
+	'''
 	while true:
 		run_turn()
 
@@ -46,7 +59,9 @@ func battle():
 
 		if !party_alive or !enemy_alive:
 			print("Battle ended!")
+
 			break
+	'''
 
 func run_turn():
 	var current_name = turn_order[turn_idx]

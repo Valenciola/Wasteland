@@ -1,9 +1,12 @@
 extends Control
 
-func setUI(contenders: Dictionary):
+var contenders
+
+func setUI(peeps: Dictionary):
 	var heroes = []
 	var enemies = []
-	print_tree_pretty()
+	contenders = peeps
+	# print_tree_pretty()
 
 	for key in contenders.keys(): # Split heroes and enemies for the purpose of display
 		if key in GameState.party_members:
@@ -54,7 +57,60 @@ func setUI(contenders: Dictionary):
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
 
+		btn.pressed.connect(func(): _on_menu_action(action))
+
 		grid.add_child(btn)
+
+func set_moves():
+	var actions = ["Attack", "Item", "Flee"]
+	var grid = $CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer
+	clear_children(grid)
+	grid.visible = true
+
+	for action in actions:
+		var btn = Button.new()
+		btn.text = action
+
+		# Expand horizontally and vertically
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+		btn.pressed.connect(func(): _on_menu_action(action))
+
+		grid.add_child(btn)
+
+func _on_menu_action(action: String):
+	var subject = BattleManager.turn_order[BattleManager.turn_idx]
+	match action:
+		"Attack":
+			show_moveset(subject)
+
+func show_moveset(actor_name: String):
+	var grid = $CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer
+	clear_children(grid)
+
+	var moves = contenders[actor_name]["moveset"]
+
+	for move_name in moves:
+		var btn = Button.new()
+		btn.text = Moves.moves[move_name]["name"]
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		btn.pressed.connect(func(): _on_move_selected(actor_name, move_name))
+		grid.add_child(btn)
+
+	# Add Back button
+	var back_btn = Button.new()
+	back_btn.text = "Back"
+	back_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	back_btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	back_btn.pressed.connect(func(): set_moves())
+	grid.add_child(back_btn)
+
+func _on_move_selected(actor_name: String, move_name: String):
+	# For now, auto-pick a target (later you’ll add target selection UI)
+	var target = BattleManager.pick_target(false)
+	BattleManager.apply_move(actor_name, move_name, target)
 
 func clear():
 	# Erase Things

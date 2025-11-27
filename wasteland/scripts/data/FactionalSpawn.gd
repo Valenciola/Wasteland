@@ -4,7 +4,7 @@ var factiondems = {
 	"Zombie": {
 		"hp_r": Vector2(50, 80),
 		"mp_r": Vector2(10, 25),
-		"speed_r": Vector2(0.2, 0.5)
+		"speed_r": Vector2(0.2, 0.4)
 	}
 }
 

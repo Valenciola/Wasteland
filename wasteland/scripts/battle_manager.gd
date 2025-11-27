@@ -4,6 +4,7 @@ var contenders = {}
 var turn_order = []
 var turn_idx = 0
 var movedict = Moves.moves
+var battle_overlay = preload("res://scenes/Battle.tscn").instantiate()
 
 func _ready():
 	randomize()
@@ -30,12 +31,11 @@ func set_battle(enemies):
 		var id = enemies.name
 		contenders[id] = enemies.stats
 
-	# print("Contenders:", contenders)
+	print("Contenders:", contenders)
 
 	det_order()
 
 	# TODO: change scene to battle (start battle, effectively)
-	var battle_overlay = preload("res://scenes/Battle.tscn").instantiate()
 	get_tree().current_scene.add_child(battle_overlay)
 	battle_overlay.setUI(contenders)
 
@@ -43,25 +43,8 @@ func set_battle(enemies):
 
 func battle():
 	# Run the battle right here (#8)
-	
-	'''
-	while true:
-		run_turn()
-
-		# End if no party members left
-		var party_alive = false
-		var enemy_alive = false
-		for contender in turn_order:
-			if GameState.party_members.has(contender):
-				party_alive = true
-			else:
-				enemy_alive = true
-
-		if !party_alive or !enemy_alive:
-			print("Battle ended!")
-
-			break
-	'''
+	print(turn_order)
+	run_turn()
 
 func run_turn():
 	var current_name = turn_order[turn_idx]
@@ -69,22 +52,40 @@ func run_turn():
 
 	if GameState.party_members.has(current_name):
 		# Player turn
-		var move = current["moveset"].pick_random()
-		var target_name = pick_target(false)
-		apply_move(current_name, move, target_name)
+		battle_overlay.set_moves()
 	else:
 		# Enemy turn
 		var move = current["moveset"].pick_random()
 		var target_name = pick_target(true)
 		apply_move(current_name, move, target_name)
 
-	# Advance turn
+func end_turn():
+	# Advance index
+	await get_tree().create_timer(1.0).timeout
 	turn_idx = (turn_idx + 1) % turn_order.size()
+
+	# Check win/lose conditions
+	var party_alive = false
+	var enemy_alive = false
+	for contender in turn_order:
+		if GameState.party_members.has(contender):
+			party_alive = true
+		else:
+			enemy_alive = true
+
+	if !party_alive or !enemy_alive:
+		print("Battle ended!")
+		return
+
+	# Run next turn
+	run_turn()
 
 func apply_move(user_name: String, move_name: String, target_name: String):
 	var user = contenders[user_name]
 	var target = contenders[target_name]
 	var move = movedict[move_name]
+
+	battle_overlay.get_node("CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer").visible = false # Hide the grid and use the move
 
 	# Deduct MP cost
 	user["mp"] -= move["cost"]
@@ -94,7 +95,7 @@ func apply_move(user_name: String, move_name: String, target_name: String):
 			target["hp"] -= move["power"]
 			target["hp"] = max(target["hp"], 0)  # clamp to 0
 			print("%s used %s on %s! %s HP is now %d" %
-				[user_name, move_name, target_name, target_name, target["hp"]])
+				[user_name, move["name"], target_name, target_name, target["hp"]])
 
 		"heal":
 			target["hp"] += move["power"]
@@ -104,20 +105,14 @@ func apply_move(user_name: String, move_name: String, target_name: String):
 
 	# Check defeat
 	if target["hp"] <= 0:
-		print("%s has been defeated!" % target_name)
-
 		var idx = turn_order.find(target_name)
 		if idx != -1:
 			turn_order.remove_at(idx)
-
-			# Adjust turn_idx if needed
-			if turn_order.size() > 0:
-				turn_idx = turn_idx % turn_order.size()
-			else:
-				turn_idx = 0
-
+			if idx < turn_idx:
+				turn_idx -= 1
 		contenders.erase(target_name)
-		# print("Turn order after erase:", turn_order)
+
+	end_turn()
 
 # Helper functions
 func det_order():

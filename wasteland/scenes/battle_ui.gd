@@ -1,11 +1,21 @@
 extends Control
 
 var contenders
+var heroes = []
+var enemies = []
+var selecting_target: bool = false
+var living = []
+var target_index: int = 0
+var move_name_cache: String = ""
+
+func _ready():
+	set_process_unhandled_input(true)
 
 func setUI(peeps: Dictionary):
-	var heroes = []
-	var enemies = []
 	contenders = peeps
+	heroes.clear()
+	enemies.clear()
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/RichTextLabel.clear()
 	# print_tree_pretty()
 
 	for key in contenders.keys(): # Split heroes and enemies for the purpose of display
@@ -96,7 +106,7 @@ func show_moveset(actor_name: String):
 		btn.text = Moves.moves[move_name]["name"]
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		btn.pressed.connect(func(): _on_move_selected(actor_name, move_name))
+		btn.pressed.connect(func(): _on_move_selected(actor_name, move_name, false))
 		grid.add_child(btn)
 
 	# Add Back button
@@ -107,10 +117,34 @@ func show_moveset(actor_name: String):
 	back_btn.pressed.connect(func(): set_moves())
 	grid.add_child(back_btn)
 
-func _on_move_selected(actor_name: String, move_name: String):
-	# For now, auto-pick a target (later you’ll add target selection UI)
-	var target = BattleManager.pick_target(false)
-	BattleManager.apply_move(actor_name, move_name, target)
+func _on_move_selected(actor_name: String, move_name: String, side: bool):
+	selecting_target = true
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer.visible = false
+	living.clear()
+	move_name_cache = move_name
+
+	if side:
+		for hero in heroes:
+			if contenders[hero]["hp"] > 0:
+				living.append(hero)
+	else:
+		for enemy in enemies:
+			if contenders[enemy]["hp"] > 0:
+				living.append(enemy)
+
+	if living.is_empty():
+		selecting_target = false
+		$CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer.visible = true
+		add_message("No valid targets.")
+		reset_highlights()
+		return
+	
+	target_index = 0
+	reset_highlights()
+	highlight_target(living[target_index])
+
+func add_message(msg: String):
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/RichTextLabel.append_text(msg + "\n")
 
 func clear():
 	# Erase Things
@@ -140,3 +174,42 @@ func clear():
 func clear_children(container: Control):
 	for child in container.get_children():
 		child.queue_free()
+
+func reset_highlights():
+	for i in range(heroes.size()):
+		var h_slot = get_node("CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player %d" % (i+1))
+		h_slot.get_node("TextureRect").modulate = Color(1,1,1)
+	for i in range(enemies.size()):
+		var e_slot = get_node("CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy %d" % (i+1))
+		e_slot.get_node("TextureRect").modulate = Color(1,1,1)
+
+func highlight_target(target_name: String):
+	var idx = heroes.find(target_name)
+	if idx != -1:
+		var h_slot = get_node("CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player %d" % (idx+1))
+		h_slot.get_node("TextureRect").modulate = Color(1.3,1.3,1.3)
+	else:
+		idx = enemies.find(target_name)
+		if idx != -1:
+			var e_slot = get_node("CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy %d" % (idx+1))
+			e_slot.get_node("TextureRect").modulate = Color(1.3,1.3,1.3)
+
+func _unhandled_input(event):
+	if selecting_target:
+		if event.is_action_pressed("ui_down"):
+			target_index = (target_index + 1) % living.size()
+			reset_highlights()
+			highlight_target(living[target_index])
+		elif event.is_action_pressed("ui_up"):
+			target_index = (target_index - 1 + living.size()) % living.size()
+			reset_highlights()
+			highlight_target(living[target_index])
+		elif event.is_action_pressed("ui_accept"):
+			selecting_target = false
+			reset_highlights()
+			$CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer.visible = true
+			BattleManager.apply_move(
+				BattleManager.turn_order[BattleManager.turn_idx],
+				move_name_cache,
+				living[target_index]
+			)

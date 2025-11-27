@@ -4,13 +4,15 @@ var contenders = {}
 var turn_order = []
 var turn_idx = 0
 var movedict = Moves.moves
-var battle_overlay = preload("res://scenes/Battle.tscn").instantiate()
+var BattleOverlayScene = preload("res://scenes/Battle.tscn")
+var battle_overlay: Node = null
 
 func _ready():
 	randomize()
 
 func set_battle(enemies):
 	contenders.clear()
+
 	turn_idx = 0
 
 	# Loop through each party member name in current_stats
@@ -28,14 +30,17 @@ func set_battle(enemies):
 			var id = "%s_%d" % [enemy["name"], i]
 			contenders[id] = enemy
 	elif typeof(enemies) == TYPE_OBJECT: # Node
-		var id = enemies.name
+		var base = enemies.stats["name"]   # "Zombie"
+		var id = base
+		# If multiple zombies can exist, make it unique:
+		# var id = "%s_%d" % [base, randi()]
 		contenders[id] = enemies.stats
 
 	print("Contenders:", contenders)
 
 	det_order()
 
-	# TODO: change scene to battle (start battle, effectively)
+	battle_overlay = BattleOverlayScene.instantiate()
 	get_tree().current_scene.add_child(battle_overlay)
 	battle_overlay.setUI(contenders)
 
@@ -75,6 +80,15 @@ func end_turn():
 
 	if !party_alive or !enemy_alive:
 		print("Battle ended!")
+		if !party_alive:
+			battle_overlay.add_message("Your party has been defeated...")
+		elif !enemy_alive:
+			battle_overlay.add_message("Victory! All enemies defeated.")
+
+		# Remove the battle overlay
+		battle_overlay.queue_free()
+		battle_overlay = null
+
 		return
 
 	# Run next turn
@@ -94,17 +108,18 @@ func apply_move(user_name: String, move_name: String, target_name: String):
 		"attack":
 			target["hp"] -= move["power"]
 			target["hp"] = max(target["hp"], 0)  # clamp to 0
-			print("%s used %s on %s! %s HP is now %d" %
+			battle_overlay.add_message("%s used %s on %s! %s HP is now %d" %
 				[user_name, move["name"], target_name, target_name, target["hp"]])
 
 		"heal":
 			target["hp"] += move["power"]
 			target["hp"] = clamp(target["hp"], 0, target["max_hp"])  # clamp between 0 and max
-			print("%s used %s! %s HP is now %d" %
-				[user_name, move_name, target_name, target["hp"]])
+			battle_overlay.add_message("%s used %s on %s! %s HP is now %d" %
+				[user_name, move["name"], target_name, target["hp"]])
 
 	# Check defeat
 	if target["hp"] <= 0:
+		battle_overlay.add_message("%s has been defeated!" % target_name)
 		var idx = turn_order.find(target_name)
 		if idx != -1:
 			turn_order.remove_at(idx)

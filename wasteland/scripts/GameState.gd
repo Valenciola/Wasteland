@@ -13,7 +13,11 @@ var flags = {
 	"in_red_house": false,
 	"open_house_crate": false,
 	"battled_zombie": false,
-	"beat_zombie": false
+	"beat_zombie": false,
+
+	# Act 1: Meet Tren
+	"met_tren": false,
+	"got_tren": false
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well

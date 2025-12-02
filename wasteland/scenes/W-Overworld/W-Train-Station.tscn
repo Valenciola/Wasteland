@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://blqpatorucxse"]
+[gd_scene load_steps=17 format=4 uid="uid://blqpatorucxse"]
 
 [ext_resource type="Texture2D" uid="uid://chp2p3atkanyv" path="res://assets/tiles/Train-Station-Tiles.png" id="1_o6ins"]
 [ext_resource type="Texture2D" uid="uid://cdjumu62pvyqq" path="res://assets/models/characters/Tren (Side).png" id="3_nqe8c"]
 [ext_resource type="PackedScene" uid="uid://brd8cl76bunps" path="res://scenes/Gen-Interactables/Train.tscn" id="4_q3fjt"]
 [ext_resource type="Script" uid="uid://05s84mt50pgo" path="res://scenes/W-Overworld/train_station_exit.gd" id="4_tqwuj"]
+[ext_resource type="Script" uid="uid://ouo48q0apj6v" path="res://scenes/W-Overworld/speakto_tren.gd" id="5_q3fjt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqwuj"]
 texture = ExtResource("1_o6ins")
@@ -42,6 +43,9 @@ size = Vector2(424, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iewup"]
 size = Vector2(345, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0khog"]
+size = Vector2(84, 137)
 
 [node name="W-train-station" type="Node2D"]
 
@@ -108,3 +112,10 @@ shape = SubResource("RectangleShape2D_oxign")
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(574, 574)
 shape = SubResource("RectangleShape2D_iewup")
+
+[node name="SpeaktoTren" type="Area2D" parent="."]
+script = ExtResource("5_q3fjt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpeaktoTren"]
+position = Vector2(454, 1)
+shape = SubResource("RectangleShape2D_0khog")

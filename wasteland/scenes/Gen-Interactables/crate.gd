@@ -50,7 +50,7 @@ func interact():
 		return
 	elif crate_id == "redhouse" and !GameState.flags["open_house_crate"]:
 		box.show_dialogue([
-			["[Player]", "There’s still materials in here…"],
+			["[Player]", "There's still materials in here…"],
 			["[Player]", "Am I gonna die if I eat these…?"],
 			["[Player]", "Then again, I'm definitely gonna die if I don't eat anything…"],
 			["[Player]", "I might as well hold onto this stuff, since it doesn't seem like anyone else is coming for it."],
@@ -74,5 +74,5 @@ func _on_dialogue_finished():
 	if empty:
 		empty = false
 		return
-	if GameState.flags["open_house_crate"]:
+	elif GameState.flags["open_house_crate"]:
 		emit_signal("crate_opened", crate_inventory)

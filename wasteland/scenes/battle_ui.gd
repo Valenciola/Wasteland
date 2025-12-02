@@ -15,7 +15,8 @@ func setUI(peeps: Dictionary):
 	contenders = peeps
 	heroes.clear()
 	enemies.clear()
-	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/RichTextLabel.clear()
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/VBoxContainer/RichTextLabel.clear()
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/VBoxContainer/DirectionsLabel.text = ""
 	# print_tree_pretty()
 
 	for key in contenders.keys(): # Split heroes and enemies for the purpose of display
@@ -117,6 +118,8 @@ func show_moveset(actor_name: String):
 	back_btn.pressed.connect(func(): set_moves())
 	grid.add_child(back_btn)
 
+	set_directions("Choose a move with the buttons.")
+
 func _on_move_selected(actor_name: String, move_name: String, side: bool):
 	selecting_target = true
 	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer.visible = false
@@ -143,8 +146,10 @@ func _on_move_selected(actor_name: String, move_name: String, side: bool):
 	reset_highlights()
 	highlight_target(living[target_index])
 
+	set_directions("Use ↑/↓ to change target, Enter to confirm.")
+
 func add_message(msg: String):
-	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/RichTextLabel.append_text(msg + "\n")
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/VBoxContainer/RichTextLabel.append_text(msg + "\n")
 
 func clear():
 	# Erase Things
@@ -213,3 +218,39 @@ func _unhandled_input(event):
 				move_name_cache,
 				living[target_index]
 			)
+
+func set_directions(msg: String):
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/VBoxContainer/DirectionsLabel.text = msg
+
+func refresh_ui():
+	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/VBoxContainer/DirectionsLabel.text = ""
+
+	# Heroes
+	for i in range(heroes.size()):
+		var hero = heroes[i]
+		var slot = get_node("CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player %d" % (i+1))
+		var details = """%s
+
+		HP: %d/%d
+		MP: %d/%d""" % [
+			hero,
+			contenders[hero]["hp"],
+			contenders[hero]["max_hp"],
+			contenders[hero]["mp"],
+			contenders[hero]["max_mp"]
+		]
+		slot.get_node("RichTextLabel").text = details
+
+	# Enemies
+	for i in range(enemies.size()):
+		var enemy_key = enemies[i]
+		var slot = get_node("CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy %d" % (i+1))
+		var details = """%s
+
+		HP: %d
+		MP: %d""" % [
+			contenders[enemy_key]["name"],
+			contenders[enemy_key]["hp"],
+			contenders[enemy_key]["mp"]
+		]
+		slot.get_node("RichTextLabel").text = details

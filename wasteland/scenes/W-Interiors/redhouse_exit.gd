@@ -25,7 +25,7 @@ func _ready():
             ["[Player]", "In fact… it seems like nobody's been here in a while. What's up with that?"],
             ["[Player]", "I wonder if it's safe to investigate further…"],
             ["TIP", "Remember, you can approach items and press \'E\' to interact with them."]
-        ], false)
+        ])
 
 func _on_body_entered(body):
     if body.name == "Player":

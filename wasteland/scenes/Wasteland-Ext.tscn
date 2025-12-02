@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bkyttuyhckoq5"]
+[gd_scene load_steps=21 format=4 uid="uid://bkyttuyhckoq5"]
 
 [ext_resource type="TileSet" uid="uid://bavcbbd512uou" path="res://assets/tiles/Wasteland-Ext.tres" id="1_2ljji"]
 [ext_resource type="PackedScene" uid="uid://dpkss5oyx6rma" path="res://scenes/W-Overworld/HouseRed-Ext.tscn" id="1_uwpte"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dqyj53hxuast4" path="res://scenes/W-Overworld/ToxicPool.tscn" id="7_oaqia"]
 [ext_resource type="PackedScene" uid="uid://d0c8hi473sa8" path="res://scenes/W-Overworld/ShedSouth-Ext.tscn" id="8_d3lmy"]
 [ext_resource type="Script" uid="uid://c2bkjgakqreo5" path="res://scenes/to_train_station.gd" id="10_rctqx"]
+[ext_resource type="Texture2D" uid="uid://n64lif3owkld" path="res://assets/models/entities/Zombie.png" id="11_djrtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7lx1"]
 size = Vector2(795, 16)
@@ -140,3 +141,9 @@ position = Vector2(-265.5, 102.5)
 
 [node name="StorageU-Exit" type="Marker2D" parent="."]
 position = Vector2(245.5, -138.5)
+
+[node name="Zombie" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-225, -33.5)
+scale = Vector2(2, 2)
+texture = ExtResource("11_djrtx")

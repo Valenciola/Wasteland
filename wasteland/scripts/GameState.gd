@@ -12,7 +12,8 @@ var flags = {
 	# Act 1: Exploration
 	"in_red_house": false,
 	"open_house_crate": false,
-	"battled_zombie": false
+	"battled_zombie": false,
+	"beat_zombie": false
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well

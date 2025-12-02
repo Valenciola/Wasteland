@@ -12,28 +12,38 @@ func _ready():
 
 func set_battle(enemies):
 	contenders.clear()
-
 	turn_idx = 0
 
-	# Loop through each party member name in current_stats
+	# Add party members
 	for member in GameState.party_members:
 		var stats = GameState.base_stats[member].duplicate()
 		stats["hp"] = GameState.current_stats[member]["hp"]
 		stats["mp"] = GameState.current_stats[member]["mp"]
-
 		contenders[member] = stats
 
-	# Add the enemy
+	# Add enemies
 	if typeof(enemies) == TYPE_ARRAY:
 		for i in range(enemies.size()):
 			var enemy = enemies[i]
-			var id = "%s_%d" % [enemy["name"], i]
-			contenders[id] = enemy
-	elif typeof(enemies) == TYPE_OBJECT: # Node
-		var base = enemies.stats["name"]   # "Zombie"
-		var id = base
-		# If multiple zombies can exist, make it unique:
-		# var id = "%s_%d" % [base, randi()]
+			var id = ""
+			var stats = null
+
+			if typeof(enemy) == TYPE_DICTIONARY:
+				id = "%s_%d" % [enemy["name"], i]
+				stats = enemy
+			elif typeof(enemy) == TYPE_OBJECT:
+				id = "%s_%d" % [enemy.stats["name"], i]
+				stats = enemy.stats
+
+			if stats != null:
+				contenders[id] = stats
+
+	elif typeof(enemies) == TYPE_DICTIONARY:
+		var id = enemies["name"]
+		contenders[id] = enemies
+
+	elif typeof(enemies) == TYPE_OBJECT: # Node with .stats
+		var id = enemies.stats["name"]
 		contenders[id] = enemies.stats
 
 	print("Contenders:", contenders)
@@ -86,8 +96,18 @@ func end_turn():
 			battle_overlay.add_message("Victory! All enemies defeated.")
 
 		# Remove the battle overlay
+		await get_tree().create_timer(1).timeout
 		battle_overlay.queue_free()
 		battle_overlay = null
+
+		if !GameState.flags["beat_zombie"]:
+			await get_tree().create_timer(1).timeout
+			get_tree().root.get_node("Main/Dialogue/DialogueBox").show_dialogue([
+				["[Player]", "Wha…"],
+				["[Player]", "I don't know what's scarier… being attacked by whatever that was or…"],
+				["[Player]", "The fact that that's the only living thing I've seen here, if that even qualifies as living…"],
+				["[Player]", "I… I really need help. There must be someone around. That voice can't be too far away. I have to keep looking…"]
+			])
 
 		return
 
@@ -103,6 +123,7 @@ func apply_move(user_name: String, move_name: String, target_name: String):
 
 	# Deduct MP cost
 	user["mp"] -= move["cost"]
+	user["mp"] = max(user["mp"], 0)
 
 	match move["type"]:
 		"attack":
@@ -116,6 +137,8 @@ func apply_move(user_name: String, move_name: String, target_name: String):
 			target["hp"] = clamp(target["hp"], 0, target["max_hp"])  # clamp between 0 and max
 			battle_overlay.add_message("%s used %s on %s! %s HP is now %d" %
 				[user_name, move["name"], target_name, target["hp"]])
+	
+	battle_overlay.refresh_ui()
 
 	# Check defeat
 	if target["hp"] <= 0:

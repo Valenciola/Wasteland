@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmnhmsqqpwvpo"]
+
+[ext_resource type="Script" uid="uid://bdyiy4d7ggyq7" path="res://scenes/screen_fx.gd" id="1_b6s3x"]
+
+[node name="ScreenFX" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_b6s3x")
+
+[node name="BlackOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

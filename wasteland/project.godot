@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wasteland"
-run/main_scene="uid://fdr6x5p403y5"
+run/main_scene="uid://v1o8dtmn8swy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,8 @@ Moves="*res://scripts/data/Moves.gd"
 FactionalSpawn="*res://scripts/data/FactionalSpawn.gd"
 BattleManager="*res://scripts/battle_manager.gd"
 QuestManager="*res://scripts/questmanager.gd"
+ScreenFX="*res://scenes/ScreenFX.tscn"
+Lines="*res://scripts/data/Lines.gd"
 
 [input]
 

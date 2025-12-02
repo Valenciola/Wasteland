@@ -15,6 +15,7 @@ script = ExtResource("1_0wfyh")
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="HUD"]
+visible = false
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -46,9 +47,11 @@ text = "Inventory"
 position = Vector2(-1, 0)
 
 [node name="Dialogue" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="DialogueBox" type="Control" parent="Dialogue"]
 visible = false
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

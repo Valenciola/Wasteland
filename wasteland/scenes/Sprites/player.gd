@@ -18,3 +18,15 @@ func _physics_process(_delta):
 
 		velocity = direction.normalized() * speed
 		move_and_slide()
+
+func hide_for_menu():
+	visible = false
+	set_process(false)
+	if $Camera2D:
+		$Camera2D.enabled = false
+
+func show_for_game():
+	visible = true
+	set_process(true)
+	if $Camera2D:
+		$Camera2D.enabled = true

@@ -1,9 +1,11 @@
 extends Node
 
 # Player Attributes
-var player_name = "You"
+var player_name: String
 var inventory = {} # Inventory contents persist across scenes, think Industrial Dungeon
-var flags = {}
+var flags = {
+	"intro": false
+}
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well
 

@@ -4,7 +4,7 @@ var EnemyScene = preload("res://scenes/Sprites/Enemy.tscn")
 
 func _ready():
 	var current_map = get_node("../CurrentMap").get_child(0) # first child is Wasteland-ext
-	create_enemy_for_map(current_map)
+	# create_enemy_for_map(current_map)
 
 func create_enemy_for_map(map: Node):
 	var spawn_points = []

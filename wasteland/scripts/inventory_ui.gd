@@ -2,7 +2,6 @@ extends Control
 
 var inventory = GameState.inventory
 var null_icon = preload("res://assets/icons/Null.png")
-
 var hud
 
 # Track whether we're viewing a crate

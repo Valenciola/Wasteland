@@ -36,6 +36,7 @@ size = Vector2(20, 261)
 size = Vector2(916, 16)
 
 [node name="HousePurple-int" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)

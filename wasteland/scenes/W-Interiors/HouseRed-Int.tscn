@@ -21,6 +21,7 @@ size = Vector2(452, 9)
 size = Vector2(4.75, 383)
 
 [node name="HouseRed-int" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)

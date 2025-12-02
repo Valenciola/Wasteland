@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0c8hi473sa8"]
+[gd_scene load_steps=5 format=3 uid="uid://d0c8hi473sa8"]
 
 [ext_resource type="Texture2D" uid="uid://2bi5pupkncdr" path="res://assets/models/interactables/ShedSouth - Ext.png" id="1_1qlju"]
+[ext_resource type="Script" uid="uid://8l0fdwn1j4w7" path="res://scenes/W-Overworld/shedsouth_entry.gd" id="2_8xc7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qlju"]
+size = Vector2(83, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xc7r"]
+size = Vector2(83, 12)
 
 [node name="ShedSouth-ext" type="Node2D"]
 
 [node name="South Shed" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_1qlju")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_1qlju")
+
+[node name="Entry" type="Area2D" parent="."]
+script = ExtResource("2_8xc7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+position = Vector2(-0.5, -40)
+shape = SubResource("RectangleShape2D_8xc7r")

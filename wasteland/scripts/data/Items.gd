@@ -21,7 +21,7 @@ var items = {
 
 	"TrainWheel": {
 		"name": "Old Wheel",
-		"description": "An old, round piece of metal. It looks like it was in use for something else before, but perhaps it could fit in a train.",
+		"description": "An old, round piece of metal. It looks like it was in use for something else before, but perhaps it could fit in another vehicle.",
 		"type": "quest",
 		"discardable": false
 	},

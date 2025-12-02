@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqyj53hxuast4"]
+[gd_scene load_steps=4 format=3 uid="uid://dqyj53hxuast4"]
 
 [ext_resource type="Texture2D" uid="uid://gtyrkuxd871k" path="res://assets/models/interactables/ToxicPool.png" id="1_2vgiq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vgiq"]
+radius = 73.2462
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm12e"]
+size = Vector2(160, 161)
 
 [node name="ToxicPool" type="Node2D"]
 
 [node name="Toxic Pool" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_2vgiq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_2vgiq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bm12e")

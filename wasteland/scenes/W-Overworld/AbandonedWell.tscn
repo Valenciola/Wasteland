@@ -1,9 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfs2fy1jbvpt0"]
+[gd_scene load_steps=4 format=3 uid="uid://bfs2fy1jbvpt0"]
 
 [ext_resource type="Texture2D" uid="uid://w5cw73p2xnih" path="res://assets/models/interactables/AbandWell.png" id="1_l1oec"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1oec"]
+radius = 64.3817
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_puilc"]
+radius = 77.1622
 
 [node name="AbandonedWell" type="Node2D"]
 
 [node name="Abandoned Well" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("1_l1oec")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_l1oec")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_puilc")

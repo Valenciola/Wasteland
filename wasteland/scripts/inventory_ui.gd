@@ -3,6 +3,8 @@ extends Control
 var inventory = GameState.inventory
 var null_icon = preload("res://assets/icons/Null.png")
 
+var hud
+
 # Track whether we're viewing a crate
 var is_crate_view: bool = false
 
@@ -10,6 +12,8 @@ func _ready():
 	print("InventoryUI ready at path:", get_path())
 	populate_inventory()
 	hide()
+	hud = get_tree().root.get_node("Main/HUD/HUD")
+
 	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # default hidden
 	$Panel/HBoxContainer/VBoxContainer/Button.pressed.connect(_on_take_all_pressed)
 
@@ -23,6 +27,8 @@ func _on_crate_opened(crate_inventory: Dictionary):
 	is_crate_view = true
 	populate_inventory()
 	show()
+	hud.hide()
+	GameState.player_can_move = false
 	$Panel.show()
 	$Panel/HBoxContainer/VBoxContainer/Button.show()  # only show in crate view
 
@@ -32,6 +38,8 @@ func open_personal_inventory():
 	is_crate_view = false
 	populate_inventory()
 	show()
+	hud.hide()
+	GameState.player_can_move = false
 	$Panel.show()
 	$Panel/HBoxContainer/VBoxContainer/Button.hide()  # hide in personal view
 
@@ -56,6 +64,8 @@ func _on_take_all_pressed():
 
 	# Close inventory
 	hide()
+	hud.show()
+	GameState.player_can_move = true
 	print("GameState inventory after take all:", GameState.inventory)
 
 func populate_inventory():
@@ -95,4 +105,6 @@ func clear(container: Node):
 func _process(_delta):
 	if is_visible_in_tree() and Input.is_action_just_pressed("ui_cancel"):
 		hide()
+		hud.show()
+		GameState.player_can_move = true
 		print("Inventory closed with Esc")

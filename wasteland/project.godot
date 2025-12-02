@@ -23,6 +23,7 @@ Items="*res://scripts/data/Items.gd"
 Moves="*res://scripts/data/Moves.gd"
 FactionalSpawn="*res://scripts/data/FactionalSpawn.gd"
 BattleManager="*res://scripts/battle_manager.gd"
+QuestManager="*res://scripts/questmanager.gd"
 
 [input]
 

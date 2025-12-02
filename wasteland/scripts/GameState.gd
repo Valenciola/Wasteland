@@ -56,6 +56,16 @@ var crates = {
 	"purplehouse_b": {
 		"Apple": 3,
 		"Water": 1
+	},
+	"shedsouth": {
+		"Water": 1,
+		"TrainWheel": 1
+	},
+	"shedwest": {
+		"TrainLight": 1
+	},
+	"storage-u": {
+		"TrainGas": 1
 	}
 }
 

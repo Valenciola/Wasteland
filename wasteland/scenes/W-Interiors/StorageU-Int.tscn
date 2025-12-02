@@ -1,3 +1,60 @@
-[gd_scene format=3 uid="uid://yahi473bxrjk"]
+[gd_scene load_steps=9 format=4 uid="uid://yahi473bxrjk"]
+
+[ext_resource type="TileSet" uid="uid://rkhgb115a8vc" path="res://assets/tiles/Wasteland-Int.tres" id="1_3tp8q"]
+[ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="2_pslu6"]
+[ext_resource type="Script" uid="uid://b8ia1l77tet1o" path="res://scenes/W-Interiors/storageu_exit.gd" id="3_pslu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tp8q"]
+size = Vector2(353.25, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pslu6"]
+size = Vector2(364.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_448vr"]
+size = Vector2(15, 367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8csk"]
+size = Vector2(12.5, 369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aci2"]
+size = Vector2(356, 23.5)
 
 [node name="StorageU-int" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAgADAAIAAAAAAAEAAgABAAIAAAAAAAIAAgABAAIAAAAAAAMAAgABAAIAAAAAAAQAAgABAAIAAAAAAAUAAgABAAIAAAAAAAYAAgABAAIAAAAAAAcAAgABAAIAAAAAAAgAAgABAAIAAAAAAAkAAgABAAIAAAAAAAoAAgAAAAMAAAABAAAAAgACAAMAAAABAAEAAgAAAAIAAAABAAIAAgAAAAIAAAABAAMAAgAAAAIAAAABAAQAAgAAAAIAAAABAAUAAgAAAAIAAAABAAYAAgAAAAIAAAABAAcAAgAAAAIAAAABAAgAAgAAAAIAAAABAAkAAgAAAAIAAAABAAoAAgAAAAMAAAACAAAAAgACAAMAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAACAAMAAgAAAAIAAAACAAQAAgAAAAIAAAACAAUAAgAAAAIAAAACAAYAAgAAAAIAAAACAAcAAgAAAAIAAAACAAgAAgAAAAIAAAACAAkAAgAAAAIAAAACAAoAAgAAAAMAAAADAAAAAgACAAMAAAADAAEAAgAAAAIAAAADAAIAAgAAAAIAAAADAAMAAgAAAAIAAAADAAQAAgAAAAIAAAADAAUAAgAAAAIAAAADAAYAAgAAAAIAAAADAAcAAgAAAAIAAAADAAgAAgAAAAIAAAADAAkAAgAAAAIAAAADAAoAAgAAAAMAAAAEAAAAAgACAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAAEAAMAAgAAAAIAAAAEAAQAAgAAAAIAAAAEAAUAAgAAAAIAAAAEAAYAAgAAAAIAAAAEAAcAAgAAAAIAAAAEAAgAAgAAAAIAAAAEAAkAAgAAAAIAAAAEAAoAAgAAAAMAAAAFAAAAAgACAAMAAAAFAAEAAgAAAAIAAAAFAAIAAgAAAAIAAAAFAAMAAgAAAAIAAAAFAAQAAgAAAAIAAAAFAAUAAgAAAAIAAAAFAAYAAgAAAAIAAAAFAAcAAgAAAAIAAAAFAAgAAgAAAAIAAAAFAAkAAgAAAAIAAAAFAAoAAgAAAAMAAAAGAAAAAgACAAMAAAAGAAEAAgAAAAIAAAAGAAIAAgAAAAIAAAAGAAMAAgAAAAIAAAAGAAQAAgAAAAIAAAAGAAUAAgAAAAIAAAAGAAYAAgAAAAIAAAAGAAcAAgAAAAIAAAAGAAgAAgAAAAIAAAAGAAkAAgAAAAIAAAAGAAoAAgAAAAMAAAAHAAAAAgACAAMAAAAHAAEAAgAAAAIAAAAHAAIAAgAAAAIAAAAHAAMAAgAAAAIAAAAHAAQAAgAAAAIAAAAHAAUAAgAAAAIAAAAHAAYAAgAAAAIAAAAHAAcAAgAAAAIAAAAHAAgAAgAAAAIAAAAHAAkAAgAAAAIAAAAHAAoAAgAAAAMAAAAIAAAAAgACAAMAAAAIAAEAAgAAAAIAAAAIAAIAAgAAAAIAAAAIAAMAAgAAAAIAAAAIAAQAAgAAAAIAAAAIAAUAAgAAAAIAAAAIAAYAAgAAAAIAAAAIAAcAAgAAAAIAAAAIAAgAAgAAAAIAAAAIAAkAAgAAAAIAAAAIAAoAAgAAAAMAAAAJAAAAAgACAAMAAAAJAAEAAgAAAAIAAAAJAAIAAgAAAAIAAAAJAAMAAgAAAAIAAAAJAAQAAgAAAAIAAAAJAAUAAgAAAAIAAAAJAAYAAgAAAAIAAAAJAAcAAgAAAAIAAAAJAAgAAgAAAAIAAAAJAAkAAgAAAAIAAAAJAAoAAgAAAAMAAAAKAAAAAgAEAAIAAAAKAAEAAgACAAIAAAAKAAIAAgACAAIAAAAKAAMAAgACAAIAAAAKAAQAAgACAAIAAAAKAAUAAgACAAIAAAAKAAYAAgACAAIAAAAKAAcAAgACAAIAAAAKAAgAAgACAAIAAAAKAAkAAgACAAIAAAAKAAoAAgAAAAMAAAA=")
+tile_set = ExtResource("1_3tp8q")
+
+[node name="Crate" parent="." instance=ExtResource("2_pslu6")]
+position = Vector2(314, 67)
+crate_id = "storage-u"
+
+[node name="StorageU-Entry" type="Marker2D" parent="."]
+position = Vector2(178, 318.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(175.875, 350)
+shape = SubResource("RectangleShape2D_3tp8q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(172.25, -1.5)
+shape = SubResource("RectangleShape2D_pslu6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.5, 173.5)
+shape = SubResource("RectangleShape2D_448vr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(353.25, 174.5)
+shape = SubResource("RectangleShape2D_r8csk")
+
+[node name="Exit" type="Area2D" parent="."]
+script = ExtResource("3_pslu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(174.5, 348.25)
+shape = SubResource("RectangleShape2D_7aci2")

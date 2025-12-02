@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://8rdp17vyblio"]
+[gd_scene load_steps=5 format=3 uid="uid://8rdp17vyblio"]
 
 [ext_resource type="Texture2D" uid="uid://b0ocg8fovb08h" path="res://assets/models/interactables/StorageU - Ext.png" id="1_bd182"]
+[ext_resource type="Script" uid="uid://bw2vklnl6bl71" path="res://scenes/W-Overworld/storageu_entry.gd" id="2_wjdaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd182"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjdaw"]
+size = Vector2(98, 11)
 
 [node name="StorageU-ext" type="Node2D"]
 
 [node name="Storage Unit" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("1_bd182")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_bd182")
+
+[node name="Entry" type="Area2D" parent="."]
+script = ExtResource("2_wjdaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+position = Vector2(0, 45.5)
+shape = SubResource("RectangleShape2D_wjdaw")

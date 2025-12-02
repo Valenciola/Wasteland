@@ -30,7 +30,7 @@ size = Vector2(199.066, 16.5425)
 size = Vector2(10.6395, 84.5848)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij8nw"]
-radius = 49.8401
+radius = 47.4166
 height = 330.496
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij8nw"]
@@ -40,6 +40,7 @@ size = Vector2(16, 942)
 size = Vector2(25, 938)
 
 [node name="Wasteland-ext" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_v7lx1")
 
 [node name="ExtTilemap" type="TileMapLayer" parent="."]
@@ -127,3 +128,15 @@ script = ExtResource("10_rctqx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainStation"]
 position = Vector2(445.5, 205)
 shape = SubResource("RectangleShape2D_eyec7")
+
+[node name="TrainStation-Exit" type="Marker2D" parent="."]
+position = Vector2(377.5, 68)
+
+[node name="ShedSouth-Exit" type="Marker2D" parent="."]
+position = Vector2(242.5, 480.5)
+
+[node name="ShedWest-Exit" type="Marker2D" parent="."]
+position = Vector2(-265.5, 102.5)
+
+[node name="StorageU-Exit" type="Marker2D" parent="."]
+position = Vector2(245.5, -138.5)

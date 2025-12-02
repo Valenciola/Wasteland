@@ -11,6 +11,7 @@ func show_dialogue(lines: Array):
 	visible = true
 	$Panel/MarginContainer/VBoxContainer/Speaker.text = dialogue_queue[current_index][0]
 	$Panel/MarginContainer/VBoxContainer/Dialogue.text = dialogue_queue[current_index][1]
+	GameState.player_can_move = false
 
 func _input(event):
 	if visible and event.is_action_pressed("ui_accept"):
@@ -18,5 +19,7 @@ func _input(event):
 		if current_index < dialogue_queue.size():
 			$Panel/MarginContainer/VBoxContainer/Speaker.text = dialogue_queue[current_index][0]
 			$Panel/MarginContainer/VBoxContainer/Dialogue.text = dialogue_queue[current_index][1]
+			GameState.player_can_move = false
 		else:
 			visible = false
+			GameState.player_can_move = true

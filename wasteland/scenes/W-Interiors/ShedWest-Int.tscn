@@ -1,3 +1,61 @@
-[gd_scene format=3 uid="uid://bidqurru3fgg5"]
+[gd_scene load_steps=9 format=4 uid="uid://bidqurru3fgg5"]
+
+[ext_resource type="TileSet" uid="uid://rkhgb115a8vc" path="res://assets/tiles/Wasteland-Int.tres" id="1_7vths"]
+[ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="2_evdwg"]
+[ext_resource type="Script" uid="uid://biskji23xu2yh" path="res://scenes/W-Interiors/shedwest_exit.gd" id="3_evdwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vths"]
+size = Vector2(25.5, 327)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evdwg"]
+size = Vector2(15, 320.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sagra"]
+size = Vector2(293, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhtce"]
+size = Vector2(294.75, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujjdp"]
+size = Vector2(6, 332)
 
 [node name="WestShed-int" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(50.5, -17.5)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAgADAAIAAAAAAAEAAgABAAIAAAAAAAIAAgABAAIAAAAAAAMAAgABAAIAAAAAAAQAAgABAAIAAAAAAAUAAgABAAIAAAAAAAYAAgABAAIAAAAAAAcAAgABAAIAAAAAAAgAAgABAAIAAAAAAAkAAgADAAMAAAABAAAAAgACAAMAAAABAAEAAgAAAAIAAAABAAIAAgAAAAIAAAABAAMAAgAAAAIAAAABAAQAAgAAAAIAAAABAAUAAgAAAAIAAAABAAYAAgAAAAIAAAABAAcAAgAAAAIAAAABAAgAAgAAAAIAAAABAAkAAgABAAMAAAACAAAAAgACAAMAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAACAAMAAgAAAAIAAAACAAUAAgAAAAIAAAACAAYAAgAAAAIAAAACAAcAAgAAAAIAAAACAAgAAgAAAAIAAAACAAkAAgABAAMAAAADAAAAAgACAAMAAAADAAEAAgAAAAIAAAADAAIAAgAAAAIAAAADAAMAAgAAAAIAAAADAAQAAgAAAAIAAAADAAUAAgAAAAIAAAADAAYAAgAAAAIAAAADAAcAAgAAAAIAAAADAAgAAgAAAAIAAAADAAkAAgABAAMAAAAEAAAAAgACAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAAEAAMAAgAAAAIAAAAEAAQAAgAAAAIAAAAEAAUAAgAAAAIAAAAEAAYAAgAAAAIAAAAEAAcAAgAAAAIAAAAEAAgAAgAAAAIAAAAEAAkAAgABAAMAAAAFAAAAAgACAAMAAAAFAAEAAgAAAAIAAAAFAAIAAgAAAAIAAAAFAAMAAgAAAAIAAAAFAAQAAgAAAAIAAAAFAAUAAgAAAAIAAAAFAAYAAgAAAAIAAAAFAAcAAgAAAAIAAAAFAAgAAgAAAAIAAAAFAAkAAgABAAMAAAAGAAAAAgACAAMAAAAGAAEAAgAAAAIAAAAGAAIAAgAAAAIAAAAGAAMAAgAAAAIAAAAGAAQAAgAAAAIAAAAGAAUAAgAAAAIAAAAGAAYAAgAAAAIAAAAGAAcAAgAAAAIAAAAGAAgAAgAAAAIAAAAGAAkAAgABAAMAAAAHAAAAAgACAAMAAAAHAAEAAgAAAAIAAAAHAAIAAgAAAAIAAAAHAAMAAgAAAAIAAAAHAAQAAgAAAAIAAAAHAAUAAgAAAAIAAAAHAAYAAgAAAAIAAAAHAAcAAgAAAAIAAAAHAAgAAgAAAAIAAAAHAAkAAgABAAMAAAAIAAAAAgAAAAMAAGAIAAEAAgAAAAMAAGAIAAIAAgAAAAMAAGAIAAMAAgAAAAMAAGAIAAQAAgAAAAMAAGAIAAUAAgAAAAMAAGAIAAYAAgAAAAMAAGAIAAcAAgAAAAMAAGAIAAgAAgAAAAMAAGAIAAkAAgAAAAMAAGACAAQAAgAAAAIAAAA=")
+tile_set = ExtResource("1_7vths")
+
+[node name="Crate" parent="." instance=ExtResource("2_evdwg")]
+position = Vector2(109.5, 175)
+crate_id = "shedwest"
+
+[node name="ShedWest-Entry" type="Marker2D" parent="."]
+position = Vector2(310, 133.5)
+
+[node name="Exit" type="Area2D" parent="."]
+script = ExtResource("3_evdwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(330.75, 144)
+shape = SubResource("RectangleShape2D_7vths")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(336.5, 142.625)
+shape = SubResource("RectangleShape2D_evdwg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(194.5, -16.5)
+shape = SubResource("RectangleShape2D_sagra")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(194.125, 302)
+shape = SubResource("RectangleShape2D_fhtce")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(51, 140.5)
+shape = SubResource("RectangleShape2D_ujjdp")

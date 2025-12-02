@@ -6,10 +6,3 @@ func _ready():
 
 	var currName = GameState.player_name
 	var box = $Dialogue/DialogueBox
-
-	box.show_dialogue([
-		[currName, "Hello there!"],
-		["???", "This is a test dialogue."],
-		[currName, "Press Enter to continue."],
-		["Valerie", "Carving out the steps..."]
-	])

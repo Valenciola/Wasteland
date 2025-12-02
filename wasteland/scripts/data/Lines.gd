@@ -2,7 +2,7 @@ extends Node
 
 # Cutscene 1 - Your Mission
 var yourmission1 = [
-	["???", "…"],
+	["???", "… \n\n\n[Press enter to continue.]"],
 	["???", "Hear me… You of the Enriched…"],
 	["???", "If to waste not is to want not… Did we ever truly wish to live?"],
 	["???", "Dangerous ambition… dangerous passivity…"],
@@ -17,5 +17,6 @@ var yourmission2 = [
     ["[Player]", "What's… going on? Where… am I?"],
     ["[Player]", "Was someone talking to me just now? But… I don't see anyone here…"],
     ["[Player]", "I didn't understand much of what the person was talking about, anyway… Restore the world? What does that mean?"],
-    ["[Player]", "Maybe… I should try to find whoever it is. Then I can ask."]
+    ["[Player]", "Maybe… I should try to find whoever it is. Then I can ask."],
+	["TIP", "Use the arrow keys to explore. You can interact with items by pressing \'E\'."]
 ]

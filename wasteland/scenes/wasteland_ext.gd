@@ -37,7 +37,7 @@ func _place_player():
 			player.global_position = spawn.global_position
 
 func _on_dialogue_finished():
-	if GameState.flags["in_red_house"]:
+	if GameState.flags["in_red_house"] and !GameState.flags["beat_zombie"] and !GameState.flags["got_tren"]:
 		match cutscene_state:
 			CutsceneState.NONE:
 				# First block finished → pan to zombie and show second block

@@ -18,4 +18,6 @@ func _on_dialogue_finished():
 	if !GameState.flags["got_tren"]:
 		GameState.party_members.append("Tren")
 		GameState.flags["got_tren"] = true
-		get_node("../Tren").visible = false
+		if (GameState.inventory.has("TrainWheel") and GameState.inventory.has("TrainLight") and GameState.inventory.has("TrainGas") and "Tren" in GameState.party_members):
+			GameState.flags["got_parts"] = true
+			get_tree().root.get_node("Main/Dialogue/DialogueBox").show_dialogue([["Tren", "Wait, you have everything already? Huh..."], ["Tren", "Well, I guess I'll take those off your hands..."]])

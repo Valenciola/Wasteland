@@ -24,6 +24,10 @@ func _ready():
 		GameState.player_can_move = false
 		await get_tree().create_timer(0.4).timeout
 		box.show_dialogue(Lines.surpriseencounter1, false)
+	
+	if !GameState.flags["got_parts"] and (GameState.inventory.has("TrainWheel") and GameState.inventory.has("TrainLight") and GameState.inventory.has("TrainGas") and "Tren" in GameState.party_members):
+		GameState.flags["got_parts"] = true
+		get_tree().root.get_node("Main/Dialogue/DialogueBox").show_dialogue([["Tren", "I think that's everything I need! Let's return to the train."]])
 
 func _place_player():
 	var player = get_tree().get_root().get_node("Player")

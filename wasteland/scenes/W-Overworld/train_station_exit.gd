@@ -9,11 +9,6 @@ func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
 
-	if GameState.flags["got_tren"]:
-		get_node("../Tren").visible = false
-	else:
-		get_node("../Tren").visible = true
-
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_inside = true

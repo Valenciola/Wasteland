@@ -17,7 +17,10 @@ var flags = {
 
 	# Act 1: Meet Tren
 	"met_tren": false,
-	"got_tren": false
+	"got_tren": false,
+	"got_parts": false,
+	"tren_fixed_train": false,
+	"player_fixed_train": false
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well

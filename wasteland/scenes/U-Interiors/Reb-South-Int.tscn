@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3jixo0njabe1"]
+[gd_scene load_steps=9 format=4 uid="uid://c3jixo0njabe1"]
 
 [ext_resource type="TileSet" uid="uid://o2dt3ebvkhpt" path="res://assets/tiles/Utopia-Int.tres" id="1_mr4s6"]
 [ext_resource type="Script" uid="uid://33e5hed1q7jf" path="res://scenes/U-Interiors/reb-south-int.gd" id="2_lpop3"]
 [ext_resource type="PackedScene" uid="uid://0q8hbdm8cikg" path="res://scenes/Sprites/U-Citizens/Rebel-Clerk.tscn" id="2_qs242"]
 [ext_resource type="PackedScene" uid="uid://qatqd06trxgw" path="res://scenes/Sprites/U-Citizens/Civ-A.tscn" id="3_lpop3"]
+[ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="5_s4ktt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr4s6"]
 size = Vector2(498.5, 11)
@@ -58,3 +59,8 @@ position = Vector2(434, 188)
 
 [node name="Reb-South-Spawn" type="Marker2D" parent="."]
 position = Vector2(133, -81)
+
+[node name="Crate" parent="." instance=ExtResource("5_s4ktt")]
+position = Vector2(-19, 285)
+scale = Vector2(2, 2)
+crate_id = "reb-south"

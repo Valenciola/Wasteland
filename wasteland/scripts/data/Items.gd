@@ -36,5 +36,48 @@ var items = {
 		"description": "A small, portable container of gas. Its scent burns your nose. The label on it reads \"Diesel\".",
 		"type": "quest",
 		"discardable": false
+	},
+
+	"Proof": {
+		"name": "Sharp Document",
+		"description": "A brief document detailing the conditions of the mines.",
+		"type": "quest",
+		"discardable": false
+	},
+	"Wood": {
+		"name": "Wood",
+		"description": "A large stack of wood. You wonder where it came from, considering you haven't seen any trees.",
+		"type": "quest",
+		"discardable": false
+	},
+	"Nails": {
+		"name": "Nails",
+		"description": "A half-empty box of nails. They all seem to be in great condition.",
+		"type": "quest",
+		"discardable": false
+	},
+	"Coal": {
+		"name": "Coal",
+		"description": "A small pile of coal. It stains your hands black.",
+		"type": "quest",
+		"discardable": false
+	},
+	"Matches": {
+		"name": "Matches",
+		"description": "A box of matches. A few of them have snapped in half. You're not quite sure what the use is for these...",
+		"type": "quest",
+		"discardable": false
+	},
+	"Plans": {
+		"name": "Lengthy Document",
+		"description": "A brief document with the words \'coup\' and \'usurp\' written in the midst of it. That doesn't sound good...",
+		"type": "quest",
+		"discardable": false
+	},
+	"Hammer": {
+		"name": "Hammer",
+		"description": "A metal tool you recall was used for construction. Considering the structure of everything around you, it's a bit unclear what purpose this serves right now...",
+		"type": "quest",
+		"discardable": false
 	}
 }

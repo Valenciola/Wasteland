@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c1yd8stpyvlok"]
+[gd_scene load_steps=9 format=4 uid="uid://c1yd8stpyvlok"]
 
 [ext_resource type="TileSet" uid="uid://o2dt3ebvkhpt" path="res://assets/tiles/Utopia-Int.tres" id="1_v32md"]
 [ext_resource type="PackedScene" uid="uid://c0ok665jcjrtx" path="res://scenes/Sprites/U-Citizens/Enf-A.tscn" id="2_2hdji"]
 [ext_resource type="Script" uid="uid://p03ujqfxiqc8" path="res://scenes/U-Interiors/enf-res-int.gd" id="2_gacg3"]
 [ext_resource type="PackedScene" uid="uid://c08q7do7c4b8q" path="res://scenes/Sprites/U-Citizens/Enf-B.tscn" id="3_gacg3"]
+[ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="5_pmdk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v32md"]
 size = Vector2(578, 25.5)
@@ -54,3 +55,8 @@ position = Vector2(157, 359)
 
 [node name="Enf-Res-Spawn" type="Marker2D" parent="."]
 position = Vector2(555, 234)
+
+[node name="Crate" parent="." instance=ExtResource("5_pmdk6")]
+position = Vector2(508, 438)
+scale = Vector2(2, 2)
+crate_id = "enf-res"

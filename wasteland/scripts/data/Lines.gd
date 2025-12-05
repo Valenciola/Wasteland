@@ -97,7 +97,7 @@ var travellingengineer = [
 var utrainarrival = [
 	["Tren", "Well, here we are. Welcome to what I'm pretty sure is Utopia's train station."],
 	["[Player]", "Oh? It's very... clean..."],
-	["Tren", "Yeah, well, that's Utopia for you. Well, should we get going?"],
+	["Tren", "Yeah, well, that's Utopia for you, at least from what I've read. Well, should we get going?"],
 	["[Player]", "What about the train?"],
 	["Tren", "I mean, I think it'll be fine here. I doubt anyone actually has the means to do anything like steal it..."],
 	["Tren", "(Still, it's got these strange blue marks on it... and it mysteriously looks brand new... But maybe that would weird someone out more than make them want to take it...)"],

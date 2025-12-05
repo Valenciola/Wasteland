@@ -4,7 +4,7 @@ extends Node
 var player_name: String
 var inventory = {} # Inventory contents persist across scenes, think Industrial Dungeon
 var flags = {
-	"u-debug": true,
+	"u-debug": false,
 
 	# Act 1: Waking Up
 	"intro": false,
@@ -27,7 +27,26 @@ var flags = {
 	# Act 2: Intro
 	"arrived_in_utopia": false,
 	"met_utopian_leader": false,
-	"tren_warned": false
+	"tren_warned": false,
+
+	# Path A
+	"spoke_to_enf": false,
+	"got_reb_materials": false,
+	"fought_reb": false,
+	"got_rumors": false,
+	"reported_rumors": false,
+	"final_a": false,
+
+	# Path B
+	"spoke_to_miner": false,
+	"got_mine_proof": false,
+	"fought_enf": false,
+	"spoke_coup": false,
+	"got_materials": false,
+	"final_b": false,
+
+	"help_u": false,
+	"expose_u": false
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well
@@ -91,6 +110,23 @@ var crates = {
 	},
 	"storage-u": {
 		"TrainGas": 1
+	},
+
+	"mining-office": {
+		"Water": 5,
+		"Proof": 1
+	},
+	"reb-west": {
+		"Wood": 1,
+		"Nails": 1,
+		"Coal": 1
+	},
+	"reb-south": {
+		"Matches": 1,
+		"Plans": 1
+	},
+	"enf-res": {
+		"Hammer": 1
 	}
 }
 

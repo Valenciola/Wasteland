@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dwx4wxr8o5l8r"]
+[gd_scene load_steps=11 format=4 uid="uid://dwx4wxr8o5l8r"]
 
+[ext_resource type="Script" uid="uid://bv225ds7axnts" path="res://scenes/U-Interiors/enforcer_office_int.gd" id="1_nu4pm"]
 [ext_resource type="TileSet" uid="uid://o2dt3ebvkhpt" path="res://assets/tiles/Utopia-Int.tres" id="1_obhkc"]
 [ext_resource type="Script" uid="uid://bqqut1lrxgylu" path="res://scenes/U-Interiors/enf-off-int.gd" id="2_3e8tl"]
 [ext_resource type="PackedScene" uid="uid://c0ok665jcjrtx" path="res://scenes/Sprites/U-Citizens/Enf-A.tscn" id="2_ta3uh"]
 [ext_resource type="PackedScene" uid="uid://cwt73u0iw6cqi" path="res://scenes/Sprites/U-Citizens/Enf-Cap.tscn" id="3_3e8tl"]
+[ext_resource type="Script" uid="uid://rlreetavp1gi" path="res://scenes/Sprites/U-Citizens/enf-cap-inter.gd" id="6_bq78u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obhkc"]
 size = Vector2(578, 25.5)
@@ -14,7 +16,12 @@ size = Vector2(20, 584.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta3uh"]
 size = Vector2(24, 584)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4gci"]
+size = Vector2(108, 168.5)
+
 [node name="Enforcer-office-int" type="Node2D"]
+position = Vector2(42, -16)
+script = ExtResource("1_nu4pm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -50,7 +57,14 @@ shape = SubResource("RectangleShape2D_ta3uh")
 position = Vector2(140, 43)
 
 [node name="Enf-cap" parent="." instance=ExtResource("3_3e8tl")]
-position = Vector2(480, 187)
+position = Vector2(367, 236)
 
 [node name="Enf-Off-Spawn" type="Marker2D" parent="."]
 position = Vector2(564, 193)
+
+[node name="Area2D2" type="Area2D" parent="."]
+script = ExtResource("6_bq78u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(368, 229)
+shape = SubResource("RectangleShape2D_b4gci")

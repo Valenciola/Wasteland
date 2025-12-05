@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo5dsxw22rs58"]
+[gd_scene load_steps=4 format=3 uid="uid://bo5dsxw22rs58"]
 
 [ext_resource type="Texture2D" uid="uid://bytoi0bd6gtfp" path="res://assets/models/characters/Utopians/Miner-A.png" id="1_lsuxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gor8w"]
 size = Vector2(17, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsuxi"]
+size = Vector2(21.3333, 40)
 
 [node name="Miner-a" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -14,3 +17,9 @@ texture = ExtResource("1_lsuxi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_gor8w")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666667, -1)
+shape = SubResource("RectangleShape2D_lsuxi")

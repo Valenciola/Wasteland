@@ -100,6 +100,12 @@ func show_moveset(actor_name: String):
 	var grid = $CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer
 	clear_children(grid)
 
+	# Safety check in case actor was defeated
+	if !contenders.has(actor_name) or !contenders[actor_name].has("moveset"):
+		add_message("Actor not found or has no moves.")
+		set_moves()
+		return
+
 	var moves = contenders[actor_name]["moveset"]
 
 	for move_name in moves:
@@ -120,7 +126,7 @@ func show_moveset(actor_name: String):
 
 	set_directions("Choose a move with the buttons.")
 
-func _on_move_selected(actor_name: String, move_name: String, side: bool):
+func _on_move_selected(_actor_name: String, move_name: String, side: bool):
 	selecting_target = true
 	$CanvasLayer/HBoxContainer/Menu/HBoxContainer/GridContainer.visible = false
 	living.clear()
@@ -128,11 +134,11 @@ func _on_move_selected(actor_name: String, move_name: String, side: bool):
 
 	if side:
 		for hero in heroes:
-			if contenders[hero]["hp"] > 0:
+			if contenders.has(hero) and contenders[hero]["hp"] > 0:
 				living.append(hero)
 	else:
 		for enemy in enemies:
-			if contenders[enemy]["hp"] > 0:
+			if contenders.has(enemy) and contenders[enemy]["hp"] > 0:
 				living.append(enemy)
 
 	if living.is_empty():
@@ -229,28 +235,38 @@ func refresh_ui():
 	for i in range(heroes.size()):
 		var hero = heroes[i]
 		var slot = get_node("CanvasLayer/HBoxContainer/Contenders/Player-S/Players/Player %d" % (i+1))
-		var details = """%s
+		
+		# Only update if hero still exists (not defeated)
+		if contenders.has(hero):
+			var details = """%s
 
 		HP: %d/%d
 		MP: %d/%d""" % [
-			hero,
-			contenders[hero]["hp"],
-			contenders[hero]["max_hp"],
-			contenders[hero]["mp"],
-			contenders[hero]["max_mp"]
-		]
-		slot.get_node("RichTextLabel").text = details
+				hero,
+				contenders[hero]["hp"],
+				contenders[hero]["max_hp"],
+				contenders[hero]["mp"],
+				contenders[hero]["max_mp"]
+			]
+			slot.get_node("RichTextLabel").text = details
+		else:
+			slot.get_node("RichTextLabel").text = "%s\n\nDEFEATED" % hero
 
 	# Enemies
 	for i in range(enemies.size()):
 		var enemy_key = enemies[i]
 		var slot = get_node("CanvasLayer/HBoxContainer/Contenders/Enemy-S/Enemies/Enemy %d" % (i+1))
-		var details = """%s
+		
+		# Only update if enemy still exists (not defeated)
+		if contenders.has(enemy_key):
+			var details = """%s
 
 		HP: %d
 		MP: %d""" % [
-			contenders[enemy_key]["name"],
-			contenders[enemy_key]["hp"],
-			contenders[enemy_key]["mp"]
-		]
-		slot.get_node("RichTextLabel").text = details
+				contenders[enemy_key]["name"],
+				contenders[enemy_key]["hp"],
+				contenders[enemy_key]["mp"]
+			]
+			slot.get_node("RichTextLabel").text = details
+		else:
+			slot.get_node("RichTextLabel").text = "DEFEATED"

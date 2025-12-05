@@ -63,6 +63,13 @@ func battle():
 
 func run_turn():
 	var current_name = turn_order[turn_idx]
+	
+	# Skip if contender was defeated and removed
+	if !contenders.has(current_name):
+		turn_idx = (turn_idx + 1) % turn_order.size()
+		run_turn()
+		return
+	
 	var current = contenders[current_name]
 
 	if GameState.party_members.has(current_name):
@@ -107,6 +114,16 @@ func end_turn():
 				["[Player]", "I don't know what's scarier… being attacked by whatever that was or…"],
 				["[Player]", "The fact that that's the only living thing I've seen here, if that even qualifies as living…"],
 				["[Player]", "I… I really need help. There must be someone around. That voice can't be too far away. I have to keep looking…"]
+			])
+		elif !GameState.flags["fought_reb"]:
+			await get_tree().create_timer(1).timeout
+			get_tree().root.get_node("Main/Dialogue/DialogueBox").show_dialogue([
+				["[Player]", "Phew..."],
+				["Rebel", "I can't believe this... so you'd rather side with these oppressors?"],
+				["[Player]", "They're just trying to promote peace... I can't let you destablize this."],
+				["Rebel", "Just... get lost. Before we make you regret it."],
+				["[Player]", "We?"],
+				["Rebel", "The revolution."]
 			])
 
 		return

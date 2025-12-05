@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://kqoqps8yw3om"]
+[gd_scene load_steps=10 format=4 uid="uid://kqoqps8yw3om"]
 
 [ext_resource type="TileSet" uid="uid://o2dt3ebvkhpt" path="res://assets/tiles/Utopia-Int.tres" id="1_ej8j7"]
 [ext_resource type="PackedScene" uid="uid://ma7mps7lfp3i" path="res://scenes/Sprites/U-Citizens/Miner-Clerk.tscn" id="2_8ml0q"]
 [ext_resource type="Script" uid="uid://d2d8snisbyw5n" path="res://scenes/U-Interiors/mining-office-int.gd" id="2_laphd"]
 [ext_resource type="PackedScene" uid="uid://bo5dsxw22rs58" path="res://scenes/Sprites/U-Citizens/Miner-A.tscn" id="3_8ml0q"]
+[ext_resource type="PackedScene" uid="uid://d0wuc2npdipss" path="res://scenes/Gen-Interactables/Crate.tscn" id="5_2k1mm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej8j7"]
 size = Vector2(1087, 20)
@@ -65,3 +66,8 @@ position = Vector2(344, 244)
 
 [node name="Miner-a" parent="." instance=ExtResource("3_8ml0q")]
 position = Vector2(-574, 363)
+
+[node name="Crate" parent="." instance=ExtResource("5_2k1mm")]
+position = Vector2(-346, -57)
+scale = Vector2(2, 2)
+crate_id = "mining-office"

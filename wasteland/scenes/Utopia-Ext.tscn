@@ -128,11 +128,9 @@ position = Vector2(351.5, 69)
 position = Vector2(461.5, 287)
 
 [node name="Tren-In" parent="." instance=ExtResource("12_f7lb3")]
-visible = false
 position = Vector2(248, 118.5)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 
 [node name="Arihara-In" parent="." instance=ExtResource("13_udcl7")]
-visible = false
 position = Vector2(454, 117)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)

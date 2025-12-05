@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://olcyr26cic2p"]
+
+[ext_resource type="Texture2D" uid="uid://ih5h237lhgjc" path="res://assets/models/characters/Utopians/Civilian-B.png" id="1_jho4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx208"]
+size = Vector2(17, 39)
+
+[node name="Civ-b" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jho4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_rx208")

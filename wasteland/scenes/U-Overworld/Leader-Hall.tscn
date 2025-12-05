@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1o8chkbbysig"]
+
+[ext_resource type="Texture2D" uid="uid://0gwbqntcoldt" path="res://assets/models/interactables/Utopia/Leadership-Hall.png" id="1_1eora"]
+[ext_resource type="Script" uid="uid://bh4bmdfptleql" path="res://scenes/U-Overworld/Leader-Hall-Ext.gd" id="2_m4eaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eora"]
+size = Vector2(145, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4eaj"]
+size = Vector2(89, 31)
+
+[node name="Leader-hall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_1eora")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, -15)
+shape = SubResource("RectangleShape2D_1eora")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_m4eaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 33.5)
+shape = SubResource("RectangleShape2D_m4eaj")

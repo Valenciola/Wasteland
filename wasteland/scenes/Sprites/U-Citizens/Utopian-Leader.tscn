@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbbgp706ekkfc"]
+
+[ext_resource type="Texture2D" uid="uid://bwjcrnq8yhctk" path="res://assets/models/characters/Utopians/Utopian-Leader.png" id="1_gupyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rokm"]
+size = Vector2(17.6667, 39.6667)
+
+[node name="Utopian-leader" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gupyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1rokm")

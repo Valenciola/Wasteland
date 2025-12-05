@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3ro2vlhc8ipx"]
+
+[ext_resource type="Texture2D" uid="uid://c51nuu4ql34tl" path="res://assets/models/interactables/Utopia/Enforcer-Office.png" id="1_6l0f8"]
+[ext_resource type="Script" uid="uid://876tjpss1pti" path="res://scenes/U-Overworld/enf-off-ext.gd" id="2_sil26"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l0f8"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sil26"]
+size = Vector2(17, 97)
+
+[node name="Enforcer-office" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_6l0f8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_6l0f8")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_sil26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(41.5, -0.5)
+shape = SubResource("RectangleShape2D_sil26")

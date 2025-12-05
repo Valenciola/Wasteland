@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0q8hbdm8cikg"]
+
+[ext_resource type="Texture2D" uid="uid://36ocmnv5lmtu" path="res://assets/models/characters/Utopians/Rebel-Clerk.png" id="1_48wf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqt70"]
+size = Vector2(17.6667, 38)
+
+[node name="Rebel-clerk" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_48wf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_hqt70")

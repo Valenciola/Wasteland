@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c08q7do7c4b8q"]
+
+[ext_resource type="Texture2D" uid="uid://b4wrlbqea1nej" path="res://assets/models/characters/Utopians/Enforcer-B.png" id="1_cnqgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k62u2"]
+size = Vector2(17, 39)
+
+[node name="Enf-b" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cnqgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_k62u2")

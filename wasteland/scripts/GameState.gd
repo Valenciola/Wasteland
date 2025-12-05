@@ -20,7 +20,9 @@ var flags = {
 	"got_tren": false,
 	"got_parts": false,
 	"tren_fixed_train": false,
-	"player_fixed_train": false
+	"player_fixed_train": false,
+
+	"u-debug": true
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well

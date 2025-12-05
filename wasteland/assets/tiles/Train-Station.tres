@@ -1,0 +1,17 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://clvmn7bqg7twn"]
+
+[ext_resource type="Texture2D" uid="uid://chp2p3atkanyv" path="res://assets/tiles/Train-Station-Tiles.png" id="1_0j0xp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2gwa"]
+texture = ExtResource("1_0j0xp")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_k2gwa")

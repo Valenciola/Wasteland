@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnc7a8n8xcc4l"]
+
+[ext_resource type="Texture2D" uid="uid://delo1svdwkkba" path="res://assets/models/characters/Utopians/People-Hero.png" id="1_uehm8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q47h"]
+size = Vector2(17, 38)
+
+[node name="Pep-hero" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uehm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6q47h")

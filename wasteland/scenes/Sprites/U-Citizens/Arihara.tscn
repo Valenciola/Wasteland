@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqrvtx4odtng"]
+
+[ext_resource type="Texture2D" uid="uid://nj8pmo07sm5n" path="res://assets/models/characters/Utopians/Arihara.png" id="1_dr3dg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2155w"]
+size = Vector2(17.3333, 39)
+
+[node name="Arihara" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dr3dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.666667, -0.5)
+shape = SubResource("RectangleShape2D_2155w")

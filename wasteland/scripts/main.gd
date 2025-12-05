@@ -18,44 +18,58 @@ func _on_dialogue_finished():
 	var box = $Dialogue/DialogueBox
 	var cam = Player.get_node("Camera2D")
 
-	# First cutscene finished
-	if !flags["intro"]:
+	if flags["u-debug"]:
+		# Debug mode: skip Wasteland, go straight to Utopia
 		await ScreenFX.fade_out(2.0)
 		await get_tree().create_timer(1.0).timeout
-		box.show_dialogue(Lines.yourmission2, false)
-		flags["intro"] = true
 
-	# Second cutscene finished (player wakes up)
-	elif flags["intro"] and !flags["house_seen"]:
-		GameState.player_can_move = false
-		hud.hide()
+		var current_map_node = get_tree().root.get_node("Main/CurrentMap")
+		var new_map = load("res://scenes/Utopia-Ext.tscn").instantiate()
 
-		# Pan to house
-		var house = $"CurrentMap/Wasteland-ext/HouseRed-ext"
-		var house_pos = house.global_position
+		# Clear out the old map
+		for child in current_map_node.get_children():
+			child.queue_free()
 
-		var tween = create_tween()
-		tween.tween_property(cam, "global_position", house_pos, 2.0)
-		await tween.finished
+		# Add the new one
+		current_map_node.add_child(new_map)
 
-		await get_tree().create_timer(1.0).timeout
+		# Move player to a spawn point inside Utopia
+		var spawn = new_map.get_node_or_null("Train-Exit")  # adjust name/path
+		if spawn:
+			Player.global_position = spawn.global_position
+	else:
+		# Normal flow: keep your existing Wasteland cutscene logic
+		if !flags["intro"]:
+			await ScreenFX.fade_out(2.0)
+			await get_tree().create_timer(1.0).timeout
+			box.show_dialogue(Lines.yourmission2, false)
+			flags["intro"] = true
 
-		# Show tutorial dialogue (about the house)
-		box.show_dialogue([
-			["[Player]", "Oh, it's a house…"],
-			["[Player]", "Maybe the person who spoke to me lives inside?"]
-		], false)
+		elif flags["intro"] and !flags["house_seen"]:
+			GameState.player_can_move = false
+			hud.hide()
 
-		flags["house_seen"] = true
+			var house = $"CurrentMap/Wasteland-ext/HouseRed-ext"
+			var house_pos = house.global_position
 
-	# House dialogue finished
-	elif flags["house_seen"] and !flags["tutorial_done"]:
-		# Pan back to player
-		var tween = create_tween()
-		tween.tween_property(cam, "global_position", Player.global_position, 2.0)
-		await tween.finished
+			var tween = create_tween()
+			tween.tween_property(cam, "global_position", house_pos, 2.0)
+			await tween.finished
 
-		# Hand control back
-		GameState.player_can_move = true
-		hud.show()
-		flags["tutorial_done"] = true
+			await get_tree().create_timer(1.0).timeout
+
+			box.show_dialogue([
+				["[Player]", "Oh, it's a house…"],
+				["[Player]", "Maybe the person who spoke to me lives inside?"]
+			], false)
+
+			flags["house_seen"] = true
+
+		elif flags["house_seen"] and !flags["tutorial_done"]:
+			var tween = create_tween()
+			tween.tween_property(cam, "global_position", Player.global_position, 2.0)
+			await tween.finished
+
+			GameState.player_can_move = true
+			hud.show()
+			flags["tutorial_done"] = true

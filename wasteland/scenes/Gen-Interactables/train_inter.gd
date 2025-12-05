@@ -4,6 +4,10 @@ var box
 
 func _ready():
 	box = get_tree().root.get_node("Main/Dialogue/DialogueBox")
+	if GameState.flags["player_fixed_train"]:
+		get_tree().root.get_node("Main/CurrentMap/W-train-station/Train/TextureRect").texture = preload("res://assets/models/interactables/Train-Restored.png")
+		get_tree().root.get_node("Main/CurrentMap/W-train-station/TileMapLayer").visible = false
+		get_tree().root.get_node("Main/CurrentMap/W-train-station/TileMapLayer(Reso)").visible = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
@@ -22,6 +26,7 @@ func _on_interact():
 		GameState.flags["player_fixed_train"] = true
 		await get_tree().create_timer(0.4).timeout
 		await ScreenFX.res_out(2.0)
+		get_tree().root.get_node("Main/CurrentMap/W-train-station/Tren").flip_h = true
 
 		box.show_dialogue([
 			["???", "You of the Enriched… Bridge these lands…"],

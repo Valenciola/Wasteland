@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxs12e6cfod24"]
+
+[ext_resource type="Texture2D" uid="uid://bqkeqb5q7l322" path="res://assets/models/interactables/Utopia/Mining-Office.png" id="1_fmv38"]
+[ext_resource type="Script" uid="uid://21qrymbtlkth" path="res://scenes/U-Overworld/mining-office-ext.gd" id="2_anwos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmv38"]
+size = Vector2(96, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anwos"]
+size = Vector2(96, 45)
+
+[node name="Mining-office" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_fmv38")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_anwos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_fmv38")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_anwos")

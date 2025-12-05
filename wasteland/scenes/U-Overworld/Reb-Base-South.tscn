@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3x8wix2uy5h8"]
+
+[ext_resource type="Texture2D" uid="uid://0xx2iucdvhwn" path="res://assets/models/interactables/Utopia/Rebel-Base-South.png" id="1_ovt55"]
+[ext_resource type="Script" uid="uid://c7mxwhh4mhlkl" path="res://scenes/U-Overworld/reb-south-ext.gd" id="2_jn7m4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovt55"]
+size = Vector2(96, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn7m4"]
+size = Vector2(96, 16)
+
+[node name="Reb-base-south" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_ovt55")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ovt55")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_jn7m4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_jn7m4")

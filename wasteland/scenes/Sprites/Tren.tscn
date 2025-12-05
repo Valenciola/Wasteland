@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://fptuntpsl0xt"]
+[gd_scene load_steps=3 format=3 uid="uid://fptuntpsl0xt"]
 
 [ext_resource type="Texture2D" uid="uid://c6i3qaoqmtax1" path="res://assets/models/characters/Tren.png" id="1_1u835"]
 
-[node name="Tren" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u835"]
+size = Vector2(17, 38)
+
+[node name="Tren" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 
 [node name="TextureRect" type="Sprite2D" parent="."]
 texture = ExtResource("1_1u835")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1u835")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwt73u0iw6cqi"]
+
+[ext_resource type="Texture2D" uid="uid://c1q4h36j4dgc1" path="res://assets/models/characters/Utopians/Enforcer-Captain.png" id="1_ds7j3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihk41"]
+size = Vector2(17.6667, 39)
+
+[node name="Enf-cap" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ds7j3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ihk41")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://cs6ufb8gfuylh"]
+[gd_scene load_steps=20 format=4 uid="uid://cs6ufb8gfuylh"]
 
+[ext_resource type="Script" uid="uid://dqqvru74fprql" path="res://scenes/utopia_ext.gd" id="1_8vowd"]
 [ext_resource type="TileSet" uid="uid://b1xnidsr5bohw" path="res://assets/tiles/Utopia-Ext.tres" id="1_mpg6e"]
 [ext_resource type="PackedScene" uid="uid://bxs12e6cfod24" path="res://scenes/U-Overworld/Mining-Office.tscn" id="2_3emvq"]
 [ext_resource type="Script" uid="uid://bepc4m1o1k886" path="res://scenes/to_mines.gd" id="2_mcty4"]
@@ -10,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d3x8wix2uy5h8" path="res://scenes/U-Overworld/Reb-Base-South.tscn" id="6_bg38f"]
 [ext_resource type="PackedScene" uid="uid://d1o8chkbbysig" path="res://scenes/U-Overworld/Leader-Hall.tscn" id="7_8vowd"]
 [ext_resource type="PackedScene" uid="uid://cgbbca7kp0qe" path="res://scenes/U-Overworld/Fountain.tscn" id="8_f7lb3"]
+[ext_resource type="PackedScene" uid="uid://fptuntpsl0xt" path="res://scenes/Sprites/Tren.tscn" id="12_f7lb3"]
+[ext_resource type="PackedScene" uid="uid://boqrvtx4odtng" path="res://scenes/Sprites/U-Citizens/Arihara.tscn" id="13_udcl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpg6e"]
 size = Vector2(682, 20)
@@ -32,6 +35,7 @@ size = Vector2(72, 851)
 
 [node name="Utopia-ext" type="Node2D"]
 scale = Vector2(2, 2)
+script = ExtResource("1_8vowd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -96,8 +100,8 @@ position = Vector2(353, -60)
 scale = Vector2(2, 2)
 
 [node name="Fountain" parent="." instance=ExtResource("8_f7lb3")]
-position = Vector2(289, 259)
-scale = Vector2(2, 2)
+position = Vector2(270, 278)
+scale = Vector2(1.5, 1.5)
 
 [node name="Mine-Exit" type="Marker2D" parent="."]
 position = Vector2(-52.5, -43)
@@ -122,3 +126,13 @@ position = Vector2(351.5, 69)
 
 [node name="Train-Exit" type="Marker2D" parent="."]
 position = Vector2(461.5, 287)
+
+[node name="Tren-In" parent="." instance=ExtResource("12_f7lb3")]
+visible = false
+position = Vector2(248, 118.5)
+scale = Vector2(2, 2)
+
+[node name="Arihara-In" parent="." instance=ExtResource("13_udcl7")]
+visible = false
+position = Vector2(454, 117)
+scale = Vector2(2, 2)

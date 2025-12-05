@@ -4,6 +4,8 @@ extends Node
 var player_name: String
 var inventory = {} # Inventory contents persist across scenes, think Industrial Dungeon
 var flags = {
+	"u-debug": true,
+
 	# Act 1: Waking Up
 	"intro": false,
 	"house_seen": false,
@@ -22,7 +24,10 @@ var flags = {
 	"tren_fixed_train": false,
 	"player_fixed_train": false,
 
-	"u-debug": true
+	# Act 2: Intro
+	"arrived_in_utopia": false,
+	"met_utopian_leader": false,
+	"tren_warned": false
 }
 var active_quests = {} # Quests persist throughout scenes
 var party_members = ["Player"] # Party members persist as well

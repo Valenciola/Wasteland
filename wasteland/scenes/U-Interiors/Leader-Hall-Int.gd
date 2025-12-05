@@ -8,6 +8,9 @@ var player_inside = false
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
+	if GameState.flags["met_utopian_leader"]:
+		$"../Arihara".hide()
+		$"../Enf-cap".hide()
 
 func _on_body_entered(body):
 	if body.name == "Player":

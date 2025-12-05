@@ -20,23 +20,25 @@ func _on_dialogue_finished():
 
 	if flags["u-debug"]:
 		# Debug mode: skip Wasteland, go straight to Utopia
-		await ScreenFX.fade_out(2.0)
-		await get_tree().create_timer(1.0).timeout
+		GameState.party_members.append("Tren")
+		if !GameState.flags["arrived_in_utopia"]:
+			await ScreenFX.fade_out(2.0)
+			await get_tree().create_timer(1.0).timeout
 
-		var current_map_node = get_tree().root.get_node("Main/CurrentMap")
-		var new_map = load("res://scenes/Utopia-Ext.tscn").instantiate()
+			var current_map_node = get_tree().root.get_node("Main/CurrentMap")
+			var new_map = load("res://scenes/U-Interiors/TrainStation-U-Int.tscn").instantiate()
 
-		# Clear out the old map
-		for child in current_map_node.get_children():
-			child.queue_free()
+			# Clear out the old map
+			for child in current_map_node.get_children():
+				child.queue_free()
 
-		# Add the new one
-		current_map_node.add_child(new_map)
+			# Add the new one
+			current_map_node.add_child(new_map)
 
-		# Move player to a spawn point inside Utopia
-		var spawn = new_map.get_node_or_null("Train-Exit")  # adjust name/path
-		if spawn:
-			Player.global_position = spawn.global_position
+			# Move player to a spawn point inside Utopia
+			var spawn = new_map.get_node_or_null("Train-Exit")  # adjust name/path
+			if spawn:
+				Player.global_position = spawn.global_position
 	else:
 		# Normal flow: keep your existing Wasteland cutscene logic
 		if !flags["intro"]:

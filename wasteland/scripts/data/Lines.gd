@@ -93,4 +93,64 @@ var travellingengineer = [
 	["[Player]", "Okay. Thanks, Tren."]
 ]
 
-# Repair the Train
+# Arrive in Utopia
+var utrainarrival = [
+	["Tren", "Well, here we are. Welcome to what I'm pretty sure is Utopia's train station."],
+	["[Player]", "Oh? It's very... clean..."],
+	["Tren", "Yeah, well, that's Utopia for you. Well, should we get going?"],
+	["[Player]", "What about the train?"],
+	["Tren", "I mean, I think it'll be fine here. I doubt anyone actually has the means to do anything like steal it..."],
+	["Tren", "(Still, it's got these strange blue marks on it... and it mysteriously looks brand new... But maybe that would weird someone out more than make them want to take it...)"],
+	["[Player]", "Tren?"],
+	["Tren", "Oh, uh... why don't you go ahead?"],
+	["[Player]", "Sure... I won't go too far."]
+]
+
+var valen_intro = [
+    ["???", "Ah, so you've finally made your way here."],
+    ["[Player]", "Oh, uh, sorry… I must've entered the wrong building…"],
+    ["???", "Not at all. Please, allow me to introduce myself…"],
+    ["Valen", "My name is Valen. I am the leader of this area called Utopia."],
+    ["[Player]", "Oh…? Um… can I ask you a question, then?"],
+    ["Valen", "…Go ahead."],
+    ["[Player]", "What's the deal with this place? How could it possibly be so… not… devastated? Hasn't the world effectively ended?"],
+    ["Valen", "Haha! A valid question. I see you must've come from somewhere like Wasteland, right?"],
+    ["[Player]", "How did you know?"],
+    ["Valen", "Your question made it quite obvious. Yes, I would agree the world has ended… but this place is just the end of the world as we know it."],
+    ["[Player]", "Sorry…?"],
+    ["Valen", "We represent here a new world order. One free of the mistakes that led to our downfall. Or… that's what we've been going for."],
+    ["[Player]", "I see. So why are you telling all this to me?"],
+    ["Valen", "Well, you… you're of the Enriched, aren't you?"],
+    ["[Player]", "?!?!"],
+    ["Valen", "You ought to know that not much happens in this land that evades my attention. One of my subjects saw your train coming in, and we did not miss its unearthly blue shades…"],
+    ["[Player]", "Um…"],
+    ["Valen", "I know we've just met, but there is a request I'd like to make of you. Would you use your strength to further our desires for peace?"],
+    ["[Player]", "M-me? But I don't even know how to use whatever abilities being Enriched gave me, not to mention I hardly know this place…!"],
+    ["Valen", "Of course. I will offer you aid. To my left stands one of my servants, Arihara. She will accompany you throughout Utopia. I'd also like to request that you speak to Captain Brody, who is standing to my right."],
+    ["Brody", "You can find me at the office to the west. It's a stark, gray building. You can't miss it."],
+    ["[Player]", "(Aw man, I haven't even said yes or no yet…)"],
+    ["Valen", "Please take your time, and don't feel pressured to abide by my request. Just allow Arihara to guide you for now. However, do recall…"],
+    ["Valen", "The events of the future will rely on you."],
+    ["[Player]", "Yeah, okay…"]
+]
+
+var tren_warning = [
+    ["Tren", "…"],
+    ["[Player]", "Oh, Tren! There you are…"],
+    ["Tren", "…"],
+    ["[Player]", "Tren?"],
+    ["Tren", "[Player]... did you see the Utopian leader in that hall just now?"],
+    ["[Player]", "Oh yeah, I did. Speaking of, this lady next to me… Her name is Arihara, and apparently she's supposed to be our guide."],
+    ["Tren", "[Player], listen to me. What did that leader say to you?"],
+    ["[Player]", "Oh, uh… something about helping further his peace mission here…"],
+    ["Tren", "Right…"],
+    ["[Player]", "Tren, what's the matter?"],
+    ["Tren", "I just… I was wandering around looking for you and I saw some things that aren't adding up…"],
+    ["[Player]", "Like…?"],
+    ["Tren", "Well, for one, there seems to be some sort of military force around here. In fact, that might be why there's no one out right now."],
+    ["[Player]", "Hmm…?"],
+    ["Tren", "I also stumbled upon a mining area to the northwest, and all of the people working there look terrible…"],
+    ["[Player]", "What are you trying to say?"],
+    ["Tren", "What's this leader's idea of peace? Why do people appear to be suffering? Something just isn't sitting right with me… I think you need to be careful, okay?"],
+    ["[Player]", "Okay."]
+]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://dj8067tpkjmrb"]
+[gd_scene load_steps=12 format=4 uid="uid://dj8067tpkjmrb"]
 
+[ext_resource type="Script" uid="uid://ctmjd7unyy3tm" path="res://scenes/U-Interiors/train_station_utopia.gd" id="1_ax4il"]
 [ext_resource type="TileSet" uid="uid://clvmn7bqg7twn" path="res://assets/tiles/Train-Station.tres" id="1_jjgo0"]
 [ext_resource type="Texture2D" uid="uid://bl5exraaqw1fk" path="res://assets/models/interactables/Train-Restored.png" id="2_jsyyj"]
 [ext_resource type="Script" uid="uid://dv1t0r5grfcsa" path="res://scenes/U-Interiors/train-u-int.gd" id="3_jsyyj"]
+[ext_resource type="PackedScene" uid="uid://fptuntpsl0xt" path="res://scenes/Sprites/Tren.tscn" id="5_qa3jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgo0"]
 size = Vector2(64.5, 704)
@@ -23,6 +25,7 @@ size = Vector2(303, 20)
 size = Vector2(25, 368)
 
 [node name="TrainStation-u-int" type="Node2D"]
+script = ExtResource("1_ax4il")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2.5, 2.5)
@@ -73,3 +76,10 @@ shape = SubResource("RectangleShape2D_f32dv")
 
 [node name="Train-Spawn" type="Marker2D" parent="."]
 position = Vector2(4, 111)
+
+[node name="U-Start" type="Marker2D" parent="."]
+position = Vector2(712, 131)
+
+[node name="Tren" parent="." instance=ExtResource("5_qa3jh")]
+visible = false
+position = Vector2(632, 125)

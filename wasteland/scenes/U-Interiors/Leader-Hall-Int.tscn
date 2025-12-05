@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dyot67wvqn7k1"]
+[gd_scene load_steps=14 format=4 uid="uid://dyot67wvqn7k1"]
 
 [ext_resource type="TileSet" uid="uid://o2dt3ebvkhpt" path="res://assets/tiles/Utopia-Int.tres" id="1_kp5xe"]
 [ext_resource type="PackedScene" uid="uid://bbbgp706ekkfc" path="res://scenes/Sprites/U-Citizens/Utopian-Leader.tscn" id="2_v56ry"]
 [ext_resource type="Script" uid="uid://cpxydpglrj2um" path="res://scenes/U-Interiors/Leader-Hall-Int.gd" id="2_xddpr"]
 [ext_resource type="PackedScene" uid="uid://boqrvtx4odtng" path="res://scenes/Sprites/U-Citizens/Arihara.tscn" id="3_xddpr"]
 [ext_resource type="PackedScene" uid="uid://cwt73u0iw6cqi" path="res://scenes/Sprites/U-Citizens/Enf-Cap.tscn" id="4_v46da"]
+[ext_resource type="Script" uid="uid://dc46iywflj4n1" path="res://scenes/U-Interiors/intro_area.gd" id="6_v46da"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kp5xe"]
 size = Vector2(984, 20)
@@ -25,6 +26,9 @@ height = 179.605
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v46da"]
 size = Vector2(802, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6kso"]
+size = Vector2(267, 20)
 
 [node name="Leader-hall-int" type="Node2D"]
 
@@ -79,3 +83,10 @@ position = Vector2(303, -283)
 
 [node name="Leadership-Hall-Spawn" type="Marker2D" parent="."]
 position = Vector2(394, 81)
+
+[node name="Valen-Intro-Trig" type="Area2D" parent="."]
+script = ExtResource("6_v46da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Valen-Intro-Trig"]
+position = Vector2(389, -182)
+shape = SubResource("RectangleShape2D_p6kso")
